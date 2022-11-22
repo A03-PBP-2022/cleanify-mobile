@@ -50,7 +50,7 @@ Modul ini berisi sistem blog yang berisi artikel-artikel yang berkaitan dengan s
 
 ## 👥 Roles
 
-Role pada Cleanify terbagi menjadi tiga.
+Role pada Cleanify terbagi menjadi empat.
 
 1. User: Pengguna biasa yang terdaftar di dalam aplikasi. Ini berbeda dengan pengguna situs yang tidak terdaftar.
 2. Crew: Petugas-petugas yang berkaitan dengan penindaklanjutan masukan-masukan pengguna. Merekalah yang melihat laporan wilayah sampah, bank sampah, dan menindaklanjuti isinya.
