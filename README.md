@@ -57,9 +57,9 @@ Role pada Cleanify terbagi menjadi empat.
 3. Moderator: Staf yang beraksi untuk melakukan moderasi terhadap input pengguna dalam modul-modul yang dapat dilihat oleh umum, seperti kolom komentar pada blog.
 4. Administrator: Staf yang mengelola aplikasi. Kelompok ini akan memiliki akses superuser.
 
-## 🖇️ Integration
+## 🖇️ Integrasi
 
-1. Menggunakan library http ...
-2. Mengimplementasi REST API...
-3. Mendesain front-end...
-4. Mengintegrasikan front-end dan back-end...
+1. Membuat REST API di pada Django yang membuat aplikasi dapat berinteraksi pada aplikasi web Django yang telah dibuat. 
+2. Membuat aplikasi dengan antarmuka sesuai dengan desain yang telah dibuat pada proyek Django sebelumnya.
+3. Membangun sebuah *class* yang dibutuhkan untuk menangani data-data yang tersedia.
+4. Dengan menggunakan *package* `http`, mengintegrasikan aplikasi yang dibuat (*front-end*) dengan aplikasi Django tersebut (*back-end*) secara asinkronus.
