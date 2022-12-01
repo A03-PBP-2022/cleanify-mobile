@@ -39,6 +39,8 @@ dependencies:
   url_launcher: ^6.1.7
   intl: ^0.17.0
   http: ^0.13.5
+  flutter_markdown: ^0.6.13
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
