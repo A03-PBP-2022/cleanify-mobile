@@ -24,6 +24,26 @@ class GlobalDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('List Bank Sampah'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Form Bank Sampah'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyFormPage()),
+              );
+            },
+          ),
         ],
       ),
     );
