@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
+import 'package:cleanify/laporsampah/page/form_report.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({
@@ -18,6 +19,16 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Report Location'),
+            onTap: () {
+              // Route menu ke halaman form
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FormReportPage()),
               );
             },
           ),
