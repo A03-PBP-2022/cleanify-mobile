@@ -1,6 +1,7 @@
 import 'package:cleanify/banksampah/model/model_banksampah.dart';
 import 'package:cleanify/banksampah/page/itembanksampah.dart';
 import 'package:cleanify/banksampah/page/listbanksampah.dart';
+import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/formbanksampah.dart';
@@ -21,50 +22,7 @@ class _BankSampahJsonState extends State<BankSampahJson> {
         appBar: AppBar(
             title: const Text('My Bank Sampah'),
         ),
-        drawer: Drawer(
-          child: Column(
-            children: [
-              ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('List Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Form Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyFormPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('My Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pop(
-                    context);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: const GlobalDrawer(),
         body: FutureBuilder(
           future: fetchMyWatchList(),
           builder: (context, AsyncSnapshot snapshot) {

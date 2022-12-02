@@ -1,4 +1,5 @@
 import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/formbanksampah.dart';
@@ -31,50 +32,7 @@ class _MyBankSampahPageState extends State<MyBankSampahPage> {
             appBar: AppBar(
                 title: Text('List Bank Sampah'),
             ),
-            drawer: Drawer(
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text('Home'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomePage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('List Bank Sampah'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pop(
-                        context);
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Form Bank Sampah'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MyFormPage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('My Bank Sampah'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const BankSampahJson()),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
+            drawer: const GlobalDrawer(),
             body: Form(
               child: SingleChildScrollView(
                 child: Container(

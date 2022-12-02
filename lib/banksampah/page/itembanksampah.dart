@@ -1,5 +1,6 @@
 import 'package:cleanify/banksampah/page/listbanksampah.dart';
 import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/core/drawer.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cleanify/banksampah/model/model_banksampah.dart';
@@ -29,53 +30,7 @@ class ItemBankSampah extends StatelessWidget {
         appBar: AppBar(
             title: const Text('Item'),
         ),
-        drawer: Drawer(
-            child: Column(
-            children: [
-                // Menambahkan clickable menu
-                ListTile(
-                title: const Text('Home'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('List Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Form Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyFormPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('My Bank Sampah'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BankSampahJson()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: const GlobalDrawer(),
         body: Container(
               child: ListView(
                 padding: const EdgeInsets.all(20.0),
