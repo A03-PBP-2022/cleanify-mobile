@@ -1,6 +1,7 @@
+import 'package:cleanify/banksampah/page/mybanksampah.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/formbanksampah.dart';
+import 'package:cleanify/banksampah/page/formbanksampah.dart';
 
 class MyBankSampahPage extends StatefulWidget {
     const MyBankSampahPage({super.key});
@@ -58,6 +59,16 @@ class _MyBankSampahPageState extends State<MyBankSampahPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => const MyFormPage()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('My Bank Sampah'),
+                    onTap: () {
+                      // Route menu ke halaman utama
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BankSampahJson()),
                       );
                     },
                   ),
