@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:cleanify/model/faq_model.dart';
+import 'package:cleanify/faq/model/faq_model.dart';
 import 'package:http/http.dart' as http;
 
 

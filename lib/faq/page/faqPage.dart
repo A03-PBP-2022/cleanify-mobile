@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 // ignore: unused_import
-import 'package:cleanify/page/faqDetail.dart';
-import 'package:cleanify/model/fetch_faq.dart';
+import 'package:cleanify/faq/page/faqDetail.dart';
+import 'package:cleanify/faq/model/fetch_faq.dart';
 
 class FaqPage extends StatefulWidget {
   const FaqPage({super.key});

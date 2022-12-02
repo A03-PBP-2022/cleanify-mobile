@@ -1,4 +1,4 @@
-import 'package:cleanify/model/faq_model.dart';
+import 'package:cleanify/faq/model/faq_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:intl/intl.dart';

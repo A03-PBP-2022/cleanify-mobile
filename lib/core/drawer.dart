@@ -1,4 +1,4 @@
-import 'package:cleanify/page/faqPage.dart';
+import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
