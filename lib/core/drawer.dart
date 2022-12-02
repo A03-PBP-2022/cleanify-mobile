@@ -1,8 +1,8 @@
-import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/banksampah/page/my.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/listbanksampah.dart';
-import 'package:cleanify/banksampah/page/formbanksampah.dart';
+import 'package:cleanify/banksampah/page/list.dart';
+import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 
 class GlobalDrawer extends StatelessWidget {
@@ -82,7 +82,7 @@ class GlobalDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
+                MaterialPageRoute(builder: (context) => const BankSampahMyPage()),
               );
             },
             dense: true,
@@ -92,7 +92,7 @@ class GlobalDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const MyFormPage()),
+                MaterialPageRoute(builder: (context) => const BankSampahFormPage()),
               );
             },
             dense: true,
@@ -102,7 +102,7 @@ class GlobalDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const BankSampahJson()),
+                MaterialPageRoute(builder: (context) => const BankSampahJsonPage()),
               );
             },
             dense: true,

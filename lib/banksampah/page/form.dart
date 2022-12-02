@@ -1,21 +1,21 @@
-import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/listbanksampah.dart';
+import 'package:cleanify/banksampah/page/list.dart';
 import 'package:intl/intl.dart';
 
 List<ListBankSampah> listData = [];
 
 
-class MyFormPage extends StatefulWidget {
-    const MyFormPage({super.key});
+class BankSampahFormPage extends StatefulWidget {
+    const BankSampahFormPage({super.key});
 
     @override
-    State<MyFormPage> createState() => _MyFormPageState();
+    State<BankSampahFormPage> createState() => _BankSampahFormPageState();
 }
 
-class _MyFormPageState extends State<MyFormPage> {
+class _BankSampahFormPageState extends State<BankSampahFormPage> {
     final _formKey = GlobalKey<FormState>();
     DateTime? _dateTime;
     String? _contact;

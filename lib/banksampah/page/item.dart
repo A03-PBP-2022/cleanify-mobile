@@ -1,13 +1,13 @@
-import 'package:cleanify/banksampah/page/listbanksampah.dart';
-import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/banksampah/page/list.dart';
+import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:cleanify/banksampah/model/model_banksampah.dart';
+import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/formbanksampah.dart';
-import 'package:cleanify/banksampah/page/fetchbanksampah.dart';
+import 'package:cleanify/banksampah/page/form.dart';
+import 'package:cleanify/banksampah/page/fetch.dart';
 
 class ItemBankSampah extends StatelessWidget {
     const ItemBankSampah(

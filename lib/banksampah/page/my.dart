@@ -1,20 +1,20 @@
-import 'package:cleanify/banksampah/model/model_banksampah.dart';
-import 'package:cleanify/banksampah/page/itembanksampah.dart';
-import 'package:cleanify/banksampah/page/listbanksampah.dart';
+import 'package:cleanify/banksampah/model/banksampah.dart';
+import 'package:cleanify/banksampah/page/item.dart';
+import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/formbanksampah.dart';
-import 'package:cleanify/banksampah/page/fetchbanksampah.dart';
+import 'package:cleanify/banksampah/page/form.dart';
+import 'package:cleanify/banksampah/page/fetch.dart';
 
-class BankSampahJson extends StatefulWidget {
-    const BankSampahJson({Key? key}) : super(key: key);
+class BankSampahJsonPage extends StatefulWidget {
+    const BankSampahJsonPage({Key? key}) : super(key: key);
 
     @override
-    _BankSampahJsonState createState() => _BankSampahJsonState();
+    _BankSampahJsonPageState createState() => _BankSampahJsonPageState();
 }
 
-class _BankSampahJsonState extends State<BankSampahJson> {
+class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
 
   @override
   Widget build(BuildContext context) {

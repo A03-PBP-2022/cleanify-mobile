@@ -1,14 +1,14 @@
-import 'package:cleanify/banksampah/page/mybanksampah.dart';
+import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/formbanksampah.dart';
+import 'package:cleanify/banksampah/page/form.dart';
 
-class MyBankSampahPage extends StatefulWidget {
-    const MyBankSampahPage({super.key});
+class BankSampahMyPage extends StatefulWidget {
+    const BankSampahMyPage({super.key});
 
     @override
-    State<MyBankSampahPage> createState() => _MyBankSampahPageState();
+    State<BankSampahMyPage> createState() => _BankSampahMyPageState();
 }
 
 class ListBankSampah {
@@ -25,7 +25,7 @@ class ListBankSampah {
   }
 }
 
-class _MyBankSampahPageState extends State<MyBankSampahPage> {
+class _BankSampahMyPageState extends State<BankSampahMyPage> {
     @override
     Widget build(BuildContext context) {
         return Scaffold(
