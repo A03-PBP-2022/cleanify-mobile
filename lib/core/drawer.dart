@@ -1,3 +1,4 @@
+import 'package:cleanify/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
@@ -126,6 +127,15 @@ class GlobalDrawer extends StatelessWidget {
                 color: Colors.black54,
               )
             ),
+          ),
+          ListTile(
+            title: const Text('FAQ'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FaqPage()),
+              );
+            },
           ),
           const ListTile(
             title: Text(
