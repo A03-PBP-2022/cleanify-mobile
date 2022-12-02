@@ -1,3 +1,4 @@
+import 'package:cleanify/page/faqPage.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 
@@ -18,6 +19,16 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('FAQ'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FaqPage()),
               );
             },
           ),
