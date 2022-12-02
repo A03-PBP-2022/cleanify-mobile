@@ -68,8 +68,8 @@ class PostFields {
 }
 
 Future<List<Post>> fetchBlogPostIndex() async {
-  var url = Uri.parse('http://127.0.0.1:8000/blog/api/post');
-  // var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post');
+  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post');
+  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post');
 
   final response = await http.get(
     url,
