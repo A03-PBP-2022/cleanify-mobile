@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:html';
-import 'package:intl/intl.dart' as http;
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 
@@ -19,21 +19,21 @@ class _FormReportPageState extends State<FormReportPage> {
   String UrgencyField = "";
   String DescriptionField = "";
   String ContactField = "";
-  // Future<void> submit(BuildContext context, String idUser) async {
-  //   // String idPemilik = idUser;
-  //   // final response = await http.post(
-  //   //     Uri.parse(
-  //   //         "" +
-  //   //             idPemilik),
-  //   //     headers: <String, String>{'Content-Type': 'application/json'},
-  //   //     body: jsonEncode(<String, dynamic>{
-  //   //       'the_location': LocationField.text,
-  //   //       'the_urgency': UrgencyField.text,
-  //   //       'the-description': DescriptionField.text,
-  //   //       'the_contact': ContactField.text,
-  //   //     }));
-  //   // print(response.body);
-  // }
+  Future<void> submit(BuildContext context, String idUser) async {
+    String idPemilik = idUser;
+    final response = await http.post(
+        Uri.parse(
+            "" +
+                idPemilik),
+        headers: <String, String>{'Content-Type': 'application/json'},
+        body: jsonEncode(<String, dynamic>{
+          'the_location': LocationField.text,
+          'the_urgency': UrgencyField.text,
+          'the-description': DescriptionField.text,
+          'the_contact': ContactField.text,
+        }));
+    print(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
