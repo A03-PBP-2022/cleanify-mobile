@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/listbanksampah.dart';
 import 'package:cleanify/banksampah/page/formbanksampah.dart';
+import 'package:cleanify/laporsampah/page/form_report.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({
@@ -51,6 +52,16 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const BankSampahJson()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Report'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FormReportPage()),
               );
             },
           ),
