@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:cleanify/banksampah/model/model_banksampah.dart';
+import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<BankSampah>> fetchMyWatchList() async {
