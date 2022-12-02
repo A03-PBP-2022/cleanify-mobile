@@ -1,6 +1,6 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cleanify/banksampah/model/model_banksampah.dart';
+import 'package:http/http.dart' as http;
 
 Future<List<BankSampah>> fetchMyWatchList() async {
     var url = Uri.parse('https://cleanifyid.up.railway.app/bank/json/');

@@ -1,8 +1,8 @@
 import 'package:cleanify/banksampah/page/mybanksampah.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/listbanksampah.dart';
-import 'package:cleanify/banksampah/formbanksampah.dart';
+import 'package:cleanify/banksampah/page/listbanksampah.dart';
+import 'package:cleanify/banksampah/page/formbanksampah.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 
 class GlobalDrawer extends StatelessWidget {
@@ -55,7 +55,7 @@ class GlobalDrawer extends StatelessWidget {
               );
             },
           ),
-           ListTile(
+          ListTile(
             title: const Text('Report'),
             onTap: () {
               // Route menu ke halaman utama

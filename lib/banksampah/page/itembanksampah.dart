@@ -1,6 +1,5 @@
 import 'package:cleanify/banksampah/page/listbanksampah.dart';
 import 'package:cleanify/banksampah/page/mybanksampah.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cleanify/banksampah/model/model_banksampah.dart';
