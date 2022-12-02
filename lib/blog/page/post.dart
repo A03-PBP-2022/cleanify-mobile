@@ -1,8 +1,6 @@
-import 'dart:math';
-
-import 'package:cleanify/blog/models/comment.dart';
-import 'package:cleanify/blog/models/post.dart';
-import 'package:cleanify/blog/page/comment.dart';
+import 'package:cleanify/blog/model/comment.dart';
+import 'package:cleanify/blog/model/post.dart';
+import 'package:cleanify/blog/component/comment_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
@@ -26,7 +24,6 @@ class _PostPageState extends State<PostPage> {
   late bool _loading;
   final int _numberOfPostsPerRequest = 10;
   late List<Comment> _comments;
-  final int _nextPageTrigger = 3;
   late ScrollController _scrollController;
 
   @override
@@ -127,26 +124,24 @@ class _PostPageState extends State<PostPage> {
                           )
                         ),
                       ),
-                      Container(
-                        child: MarkdownBody(
-                          data: snapshot.data!.fields.content,
-                        ),
+                      MarkdownBody(
+                        data: snapshot.data!.fields.content,
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: 8),
-                        child: Divider(),
+                        margin: const EdgeInsets.symmetric(vertical: 8),
+                        child: const Divider(),
                       ),
                       Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         child: const Text(
-                          "Comment",
+                          "Comments",
                           style: TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      CommentsList()
+                      commentsList()
                     ],
                   ),
                 )
@@ -161,7 +156,7 @@ class _PostPageState extends State<PostPage> {
     );
   }
 
-  Widget CommentsList() {
+  Widget commentsList() {
     if (_comments.isEmpty) {
       if (_loading) {
         return const Center(
@@ -171,7 +166,7 @@ class _PostPageState extends State<PostPage> {
           )
         );
       } else if (_error) {
-        return Center(
+        return const Center(
             // child: errorDialog(size: 20)
         );
       }

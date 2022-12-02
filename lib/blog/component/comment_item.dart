@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-import 'package:cleanify/blog/models/comment.dart';
+import 'package:cleanify/blog/model/comment.dart';
 
 class CommentItem extends StatelessWidget {
 
