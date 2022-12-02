@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = cleanify
+PRODUCT_NAME = Cleanify
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.cleanify
+PRODUCT_BUNDLE_IDENTIFIER = id.ac.ui.cs.cleanify
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 A03-PBP-2022. All rights reserved.
