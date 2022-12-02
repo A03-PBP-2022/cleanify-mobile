@@ -1,3 +1,4 @@
+import 'package:cleanify/banksampah/page/mybanksampah.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/listbanksampah.dart';
@@ -45,6 +46,16 @@ class GlobalDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            title: const Text('My Bank Sampah'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const BankSampahJson()),
+              );
+            },
+          ),
+           ListTile(
             title: const Text('Report'),
             onTap: () {
               // Route menu ke halaman utama

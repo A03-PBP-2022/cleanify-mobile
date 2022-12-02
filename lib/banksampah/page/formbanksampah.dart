@@ -1,6 +1,7 @@
+import 'package:cleanify/banksampah/page/mybanksampah.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/listbanksampah.dart';
+import 'package:cleanify/banksampah/page/listbanksampah.dart';
 import 'package:intl/intl.dart';
 
 List<ListBankSampah> listData = [];
@@ -52,11 +53,23 @@ class _MyFormPageState extends State<MyFormPage> {
                     },
                   ),
                   ListTile(
-                    title: const Text('Form Bank Sampaah'),
+                    title: const Text('List Bank Sampah'),
                     onTap: () {
                       // Route menu ke halaman utama
-                      Navigator.pop(
-                        context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('My Bank Sampah'),
+                    onTap: () {
+                      // Route menu ke halaman utama
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BankSampahJson()),
+                      );
                     },
                   ),
                 ],
