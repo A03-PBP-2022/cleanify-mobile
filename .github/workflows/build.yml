@@ -27,7 +27,7 @@ jobs:
       - name: Build app
         run: |
           flutter clean
-          flutter build web
+          flutter build web --base-href "/cleanify-mobile/"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v1
@@ -70,7 +70,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build app
-        run: flutter build apk --split-per-abi
+        run: flutter build apk
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
