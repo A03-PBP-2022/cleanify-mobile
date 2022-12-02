@@ -36,7 +36,7 @@ Modul ini berfungsi sebagai autentikasi user menggunakan aplikasi. Tedapat prose
 
 ### 2. Pelaporan Wilayah Sampah
 
-![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
+![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
 
 Modul ini berfungsi sebagai tempat melaporkan wilayah sampah yang perlu dibersihkan oleh crew, yang dikhususkan untuk user untuk diisi. Laporan ini nanti akan ditunjukkan pada dasbor laporan wilayah sampah.
 
@@ -44,7 +44,7 @@ Modul ini juga berisi dasbor yang berisi laporan-laporan wilayah sampah yang per
 
 ### 3. Bank Sampah
 
-![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
+![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
 
 Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampah ke dalam tempat bank sampah tersebut. Setelah melakukan pengisian form tersebut, maka akan dilakukannya pengambilan sampah tersebut.
 
@@ -52,7 +52,7 @@ Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampa
 
 ![](https://img.shields.io/badge/bagian-Muhammad_Alif_Ilham-blue)
 
-Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca. Pertanyaan dan jawaban dengan jumlah *thumbs up* terbanyak akan ditampilkan di paling atas daftar pertanyaan. Modul ini dapat dilihat dan diakses oleh User.
+Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca. Pertanyaan dan jawaban dengan jumlah *thumbs up* terbanyak akan ditampilkan di paling atas daftar pertanyaan. Mengambil data dari Json cleanify web. Modul ini dapat dilihat dan diakses oleh User.
 
 ### 5. Blog
 
