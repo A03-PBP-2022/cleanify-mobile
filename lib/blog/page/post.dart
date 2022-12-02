@@ -33,7 +33,8 @@ class _PostPageState extends State<PostPage> {
     _pageNumber = 1;
     _comments = [];
     _isLastPage = false;
-    _loading = false;
+    _loading = true;
+    fetchComments2();
     _error = false;
     _scrollController = ScrollController();
   }
@@ -44,11 +45,11 @@ class _PostPageState extends State<PostPage> {
 
       if (mounted) {
         setState(() {
-        _isLastPage = commentList.length < _numberOfPostsPerRequest;
-        _loading = false;
-        _pageNumber = _pageNumber + 1;
-        _comments.addAll(commentList);
-      });
+          _isLastPage = commentList.length < _numberOfPostsPerRequest;
+          _loading = false;
+          _pageNumber = _pageNumber + 1;
+          _comments.addAll(commentList);
+        });
       }
     } catch (e) {
       // print("error --> $e");
@@ -67,14 +68,11 @@ class _PostPageState extends State<PostPage> {
     _scrollController.addListener(() {
       var nextPageTrigger = 0.8 * _scrollController.position.maxScrollExtent;
 
-      if (_scrollController.position.pixels > nextPageTrigger && !_loading && !_error && !_isLastPage) {
+      if ((_scrollController.position.pixels > nextPageTrigger) && !_loading && !_error && !_isLastPage) {
         _loading = true;
         fetchComments2();
       }
     });
-
-    _loading = true;
-    fetchComments2();
 
     return Scaffold(
       appBar: AppBar(
