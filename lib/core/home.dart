@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 
-final Uri _url = Uri.parse('https://cleanifyid.herokuapp.com');
+final Uri _url = Uri.parse('https://cleanifyid.up.railway.app');
 
 Future<void> _launchUrl() async {
   if (!await launchUrl(_url)) {
@@ -35,21 +35,65 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Coming soon!',
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+              alignment: Alignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Icon(
+                            Icons.delete,
+                            size: 64,
+                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                          )
+                        ),
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Text(
+                            'Cleanify',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 40,
+                              color: Theme.of(context).textTheme.bodyMedium?.color
+                            )
+                          )
+                        ),
+                        
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    'An app to clean the trash around us.'
+                  )
+                ],
               ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
-              child: RichText(
-                text: TextSpan(
+              child: const Text(
+                'Cleanify menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Aplikasi ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.',
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: const Text(
+                'Mulai menjelajahi aplikasi ini dengan membuka drawer disamping.',
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Text.rich(
+                TextSpan(
                   children: [
                     const TextSpan(
-                      text: "For now, we're available at ",
+                      text: "Cleanify juga tersedia dalam ",
                     ),
                     TextSpan(
-                      text: "cleanifyid.herokuapp.com",
+                      text: "cleanifyid.up.railway.app",
                       style: const TextStyle(
                         color: Colors.blue, 
                         decoration: TextDecoration.underline
@@ -61,7 +105,6 @@ class _HomePageState extends State<HomePage> {
                       text: ".",
                     ),
                   ],
-                  style: const TextStyle(color: Colors.black87, fontFamily: 'Roboto')
                 ),
               )
             ),

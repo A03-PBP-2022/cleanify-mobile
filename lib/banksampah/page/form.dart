@@ -1,19 +1,21 @@
+import 'package:cleanify/banksampah/page/my.dart';
+import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/listbanksampah.dart';
+import 'package:cleanify/banksampah/page/list.dart';
 import 'package:intl/intl.dart';
 
 List<ListBankSampah> listData = [];
 
 
-class MyFormPage extends StatefulWidget {
-    const MyFormPage({super.key});
+class BankSampahFormPage extends StatefulWidget {
+    const BankSampahFormPage({super.key});
 
     @override
-    State<MyFormPage> createState() => _MyFormPageState();
+    State<BankSampahFormPage> createState() => _BankSampahFormPageState();
 }
 
-class _MyFormPageState extends State<MyFormPage> {
+class _BankSampahFormPageState extends State<BankSampahFormPage> {
     final _formKey = GlobalKey<FormState>();
     DateTime? _dateTime;
     String? _contact;
@@ -28,40 +30,7 @@ class _MyFormPageState extends State<MyFormPage> {
             appBar: AppBar(
                 title: Text('Form Bank Sampah'),
             ),
-            drawer: Drawer(
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text('Home'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomePage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('List Bank Sampah'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('Form Bank Sampaah'),
-                    onTap: () {
-                      // Route menu ke halaman utama
-                      Navigator.pop(
-                        context);
-                    },
-                  ),
-                ],
-              ),
-            ),
+            drawer: const GlobalDrawer(),
             body: Form(
               key: _formKey,
               child: SingleChildScrollView(
