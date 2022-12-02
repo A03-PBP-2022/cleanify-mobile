@@ -1,4 +1,5 @@
 import 'package:cleanify/banksampah/page/my.dart';
+import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/list.dart';
@@ -125,6 +126,17 @@ class GlobalDrawer extends StatelessWidget {
               )
             ),
           ),
+          ListTile(
+            title: const Text('Index'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const BlogIndexPage()),
+              );
+            },
+            dense: true,
+          ),
+
         ],
       ),
     );
