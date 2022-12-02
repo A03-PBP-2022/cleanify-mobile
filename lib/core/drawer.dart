@@ -16,54 +16,114 @@ class GlobalDrawer extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            title: const Text('Home'),
+            title: Text.rich(
+              TextSpan(
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Icon(
+                      Icons.delete,
+                      size: 32,
+                      color: Theme.of(context).textTheme.bodyMedium?.color,
+                    )
+                  ),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Text(
+                      'Cleanify',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        color: Theme.of(context).textTheme.bodyMedium?.color
+                      )
+                    )
+                  ),
+                  
+                ],
+              ),
+            ),
             onTap: () {
-              // Route menu ke halaman utama
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const HomePage()),
               );
             },
           ),
-          ListTile(
-            title: const Text('List Bank Sampah'),
-            onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Form Bank Sampah'),
-            onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyFormPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('My Bank Sampah'),
-            onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const BankSampahJson()),
-              );
-            },
+          const ListTile(
+            title: Text(
+              'Report Waste',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              )
+            ),
           ),
           ListTile(
             title: const Text('Report'),
             onTap: () {
-              // Route menu ke halaman utama
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FormReportPage()),
               );
             },
+            dense: true,
+          ),
+          const ListTile(
+            title: Text(
+              'Waste Bank',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              )
+            ),
+          ),
+          ListTile(
+            title: const Text('List Bank Sampah'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyBankSampahPage()),
+              );
+            },
+            dense: true,
+          ),
+          ListTile(
+            title: const Text('Form Bank Sampah'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyFormPage()),
+              );
+            },
+            dense: true,
+          ),
+          ListTile(
+            title: const Text('My Bank Sampah'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const BankSampahJson()),
+              );
+            },
+            dense: true,
+          ),
+          const ListTile(
+            title: Text(
+              'FAQ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              )
+            ),
+          ),
+          const ListTile(
+            title: Text(
+              'Blog',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black54,
+              )
+            ),
           ),
         ],
       ),
