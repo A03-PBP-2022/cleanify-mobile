@@ -3,6 +3,7 @@ import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/listbanksampah.dart';
 import 'package:cleanify/banksampah/formbanksampah.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
+import 'package:cleanify/laporsampah/page/list_report.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({
@@ -45,12 +46,22 @@ class GlobalDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Report'),
+            title: const Text('Pelaporan Wilayah Sampah'),
             onTap: () {
               // Route menu ke halaman utama
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FormReportPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('List Wilayah Sampah'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ListReportPage()),
               );
             },
           ),
