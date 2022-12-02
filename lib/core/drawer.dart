@@ -68,6 +68,15 @@ class GlobalDrawer extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const FormReportPage()),
               );
             },
+          ),
+          ListTile(
+            title: const Text('List Wilayah Sampah'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ListReportPage()),
+              );
+            },
             dense: true,
           ),
           const ListTile(
@@ -136,15 +145,6 @@ class GlobalDrawer extends StatelessWidget {
               );
             },
             dense: true,
-          ),
-          ListTile(
-            title: const Text('List Wilayah Sampah'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const ListReportPage()),
-              );
-            },
           ),
         ],
       ),
