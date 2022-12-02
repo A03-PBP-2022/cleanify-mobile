@@ -27,10 +27,10 @@ class _FormReportPageState extends State<FormReportPage> {
                 idPemilik),
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode(<String, dynamic>{
-          'the_location': LocationField.text,
-          'the_urgency': UrgencyField.text,
-          'the-description': DescriptionField.text,
-          'the_contact': ContactField.text,
+          'the_location': LocationField,
+          'the_urgency': UrgencyField,
+          'the-description': DescriptionField,
+          'the_contact': ContactField,
         }));
     print(response.body);
   }
