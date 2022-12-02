@@ -2,6 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
+import 'package:cleanify/laporsampah/model/laporan.dart';
+import 'package:cleanify/laporsampah/page/list_report.dart';
+import 'package:intl/intl.dart';
+
+List<Details> listData = [];
 
 class FormReportPage extends StatefulWidget {
   // final String id;
@@ -13,26 +18,17 @@ class FormReportPage extends StatefulWidget {
 
 class _FormReportPageState extends State<FormReportPage> {
   final _formKey = GlobalKey<FormState>();
+  // TextEditingController LocationField = TextEditingController(text: "");
+  // TextEditingController UrgencyField = TextEditingController(text: "");
+  // TextEditingController DescriptionField = TextEditingController(text: "");
+  // TextEditingController ContactField = TextEditingController(text: "");
+  // TextEditingController DateField = TextEditingController(text: "");
 
-  String LocationField = "";
-  String UrgencyField = "";
-  String DescriptionField = "";
-  String ContactField = "";
-  Future<void> submit(BuildContext context, String idUser) async {
-    String idPemilik = idUser;
-    final response = await http.post(
-        Uri.parse(
-            "" +
-                idPemilik),
-        headers: <String, String>{'Content-Type': 'application/json'},
-        body: jsonEncode(<String, dynamic>{
-          'the_location': LocationField,
-          'the_urgency': UrgencyField,
-          'the-description': DescriptionField,
-          'the_contact': ContactField,
-        }));
-    print(response.body);
-  }
+  String? LocationField = "";
+  String? UrgencyField = "";
+  String? DescriptionField = "";
+  String? ContactField = "";
+  String? DateField = "";
 
   @override
   Widget build(BuildContext context) {
@@ -163,6 +159,19 @@ class _FormReportPageState extends State<FormReportPage> {
                     },
                   ),
                 ),
+                TextButton(
+                    child: const Text('Submit'),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Details data = Details(
+                            DateField.toString(),
+                            LocationField.toString(),
+                            UrgencyField.toString(),
+                            DescriptionField.toString(),
+                            ContactField.toString());
+                        listData.add(data);
+                      }
+                    }),
               ],
             ),
           ),
