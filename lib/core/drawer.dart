@@ -25,16 +25,6 @@ class GlobalDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Report'),
-            onTap: () {
-              // Route menu ke halaman utama
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const FormReportPage()),
-              );
-            },
-          ),
-                    ListTile(
             title: const Text('List Bank Sampah'),
             onTap: () {
               // Route menu ke halaman utama
@@ -51,6 +41,16 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const MyFormPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Report'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FormReportPage()),
               );
             },
           ),
