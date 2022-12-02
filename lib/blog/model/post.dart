@@ -89,8 +89,8 @@ Future<List<Post>> fetchBlogPostIndex() async {
 }
 
 Future<Post> fetchPost(int postId) async {
-  var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId');
-  // var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId');
+  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId');
+  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId');
 
   final response = await http.get(
     url,

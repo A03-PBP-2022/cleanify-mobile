@@ -108,8 +108,8 @@ class Perms {
 }
 
 Future<List<Comment>> fetchComments(int postId, int pageKey) async {
-  var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId/comment?page=$pageKey');
-  // var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId/comment?page=$pageKey');
+  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId/comment?page=$pageKey');
+  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId/comment?page=$pageKey');
 
   final response = await http.get(
     url,
