@@ -1,7 +1,16 @@
 # Cleanify (di mobile)
 
-<!-- [![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
-[![Aplikasi Heroku](https://img.shields.io/badge/heroku-cleanifyid-blue?logo=heroku&logoColor=white)](https://cleanifyid.herokuapp.com/) -->
+[![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Status build di master](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logo=github-actions&logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Status build di dev](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logo=github-actions&logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Aplikasi di GitHub Pages](https://img.shields.io/badge/web-a03--pbp--2022.github.io%2Fcleanify--mobile-blue?logo=github&logoColor=white)](https://a03-pbp-2022.github.io/cleanify-mobile/)
+
+## 🔽 Download
+
+| Status | Android (*.apk) |  
+| -: | - |
+| [![Master build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/master/android.zip)
+| [![Dev build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/dev/android.zip)
 
 <!--
 Nanti akan diganti dengan link ke APK langsung. Jangan dulu.
