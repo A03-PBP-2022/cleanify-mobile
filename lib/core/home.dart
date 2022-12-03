@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
               alignment: Alignment.center,
+              color: Theme.of(context).backgroundColor,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -76,12 +77,18 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8),
               child: const Text(
                 'Cleanify menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Aplikasi ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.',
-              ),
+                style: TextStyle(
+                  height: 1.5
+                ),
+              )
             ),
             Container(
               padding: const EdgeInsets.all(8),
               child: const Text(
                 'Anda dapat mulai aplikasi ini dengan membuka drawer disamping.',
+                style: TextStyle(
+                  height: 1.5
+                ),
               ),
             ),
             Container(
@@ -105,6 +112,9 @@ class _HomePageState extends State<HomePage> {
                       text: ".",
                     ),
                   ],
+                ),
+                style: const TextStyle(
+                  height: 1.5
                 ),
               )
             ),

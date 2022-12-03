@@ -1,3 +1,4 @@
+import 'package:cleanify/blog/component/markdown_style.dart';
 import 'package:cleanify/blog/model/comment.dart';
 import 'package:cleanify/blog/model/post.dart';
 import 'package:cleanify/blog/component/comment_item.dart';
@@ -93,7 +94,7 @@ class _PostPageState extends State<PostPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(bottom: 8),
+                        margin: const EdgeInsets.only(bottom: 12),
                         child: Text(
                           "${snapshot.data!.title}",
                           style: const TextStyle(
@@ -103,7 +104,7 @@ class _PostPageState extends State<PostPage> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(bottom: 16),
+                        margin: const EdgeInsets.only(bottom: 12),
                         child: Text.rich(
                           TextSpan(
                             children: [
@@ -124,6 +125,7 @@ class _PostPageState extends State<PostPage> {
                       ),
                       MarkdownBody(
                         data: snapshot.data!.content,
+                        styleSheet: blogMarkdownStyle
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 8),

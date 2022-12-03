@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:cleanify/blog/component/markdown_style.dart';
 import 'package:cleanify/blog/model/post.dart';
 import 'package:cleanify/blog/page/post.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class PostListItem extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: const EdgeInsets.only(bottom: 8),
+                margin: const EdgeInsets.only(bottom: 12),
                 child: Text(
                   post.title,
                   style: const TextStyle(
@@ -33,7 +34,7 @@ class PostListItem extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(bottom: 16),
+                margin: const EdgeInsets.only(bottom: 12),
                 child: Text.rich(
                   TextSpan(
                     children: [
@@ -48,12 +49,13 @@ class PostListItem extends StatelessWidget {
                       )),
                       // Dapatkan juga orangnya
                       TextSpan(text: " ${post.author.username}"),
-                    ]
-                  )
+                    ],
+                  ),
                 ),
               ),
              MarkdownBody(
                 data: post.content.substring(0, min(120, post.content.length)),
+                styleSheet: blogMarkdownStyle,
               ),
             ],
           )
