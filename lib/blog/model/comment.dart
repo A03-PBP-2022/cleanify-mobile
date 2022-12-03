@@ -1,115 +1,99 @@
-import 'dart:convert';
+import 'package:cleanify/blog/consts.dart';
 import 'package:http/http.dart' as http;
 
-List<Comment> commentFromJson(String str) =>
-    List<Comment>.from(json.decode(str).map((x) => Comment.fromJson(x)));
+import 'dart:convert';
 
-String commentToJson(List<Comment> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+Comments commentsFromJson(String str) => Comments.fromJson(json.decode(str));
 
-class Comment {
-  Comment({
-    required this.model,
-    required this.pk,
-    required this.fields,
-    required this.perms,
-  });
+String commentsToJson(Comments data) => json.encode(data.toJson());
 
-  String model;
-  int pk;
-  CommentFields fields;
-  Perms perms;
+class Comments {
+    Comments({
+        required this.count,
+        required this.next,
+        required this.previous,
+        required this.results,
+    });
 
-  factory Comment.fromJson(Map<String, dynamic> json) => Comment(
-        model: json["model"],
-        pk: json["pk"],
-        fields: CommentFields.fromJson(json["fields"]),
-        perms: Perms.fromJson(json["perms"]),
-      );
+    int count;
+    dynamic next;
+    dynamic previous;
+    List<Comment> results;
 
-  Map<String, dynamic> toJson() => {
-        "model": model,
-        "pk": pk,
-        "fields": fields.toJson(),
-        "perms": perms.toJson(),
-      };
+    factory Comments.fromJson(Map<String, dynamic> json) => Comments(
+        count: json["count"],
+        next: json["next"],
+        previous: json["previous"],
+        results: List<Comment>.from(json["results"].map((x) => Comment.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "count": count,
+        "next": next,
+        "previous": previous,
+        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+    };
 }
 
-class CommentFields {
-  CommentFields({
-    required this.author,
-    required this.content,
-    required this.post,
-    required this.createdTimestamp,
-    required this.modifiedTimestamp,
-  });
+class Comment {
+    Comment({
+        required this.pk,
+        required this.author,
+        required this.content,
+        required this.post,
+        required this.createdTimestamp,
+        required this.modifiedTimestamp,
+    });
 
-  Author author;
-  String content;
-  int post;
-  DateTime createdTimestamp;
-  DateTime modifiedTimestamp;
+    int pk;
+    Author author;
+    String content;
+    int post;
+    DateTime createdTimestamp;
+    DateTime modifiedTimestamp;
 
-  factory CommentFields.fromJson(Map<String, dynamic> json) => CommentFields(
+    factory Comment.fromJson(Map<String, dynamic> json) => Comment(
+        pk: json["pk"],
         author: Author.fromJson(json["author"]),
         content: json["content"],
         post: json["post"],
         createdTimestamp: DateTime.parse(json["created_timestamp"]),
         modifiedTimestamp: DateTime.parse(json["modified_timestamp"]),
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
+        "pk": pk,
         "author": author.toJson(),
         "content": content,
         "post": post,
         "created_timestamp": createdTimestamp.toIso8601String(),
         "modified_timestamp": modifiedTimestamp.toIso8601String(),
-      };
+    };
 }
 
 class Author {
-  Author({
-    required this.username,
-    required this.name,
-  });
+    Author({
+        required this.username,
+        required this.nama,
+    });
 
-  String username;
-  String name;
+    String username;
+    String nama;
 
-  factory Author.fromJson(Map<String, dynamic> json) => Author(
+    factory Author.fromJson(Map<String, dynamic> json) => Author(
         username: json["username"],
-        name: json["name"],
-      );
+        nama: json["nama"],
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "username": username,
-        "name": name,
-      };
-}
-
-class Perms {
-  Perms({
-    required this.edit,
-    required this.delete,
-  });
-
-  bool edit;
-  bool delete;
-
-  factory Perms.fromJson(Map<String, dynamic> json) => Perms(
-        edit: json["edit"],
-        delete: json["delete"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "edit": edit,
-        "delete": delete,
-      };
+        "nama": nama,
+    };
 }
 
 Future<List<Comment>> fetchComments(int postId, int pageKey) async {
-  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId/comment?page=$pageKey');
-  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId/comment?page=$pageKey');
+
+  var url = Uri.parse('https://$endpointDomain/blog/api2/posts/$postId/comments?page=$pageKey');
 
   final response = await http.get(
     url,
@@ -123,7 +107,7 @@ Future<List<Comment>> fetchComments(int postId, int pageKey) async {
     throw Exception("Failed to load list.");
   }
 
-  final data = commentFromJson(utf8.decode(response.bodyBytes));
+  final data = commentsFromJson(utf8.decode(response.bodyBytes)).results;
 
   return data;
 }

@@ -25,7 +25,7 @@ class PostListItem extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  post.fields.title,
+                  post.title,
                   style: const TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.w600,
@@ -41,19 +41,19 @@ class PostListItem extends StatelessWidget {
                         Icons.calendar_today,
                         size: 16,
                       )),
-                      TextSpan(text: " ${DateFormat("dd MMMM y").format(post.fields.createdTimestamp)} • "),
+                      TextSpan(text: " ${DateFormat("dd MMMM y").format(post.createdTimestamp)} • "),
                       const WidgetSpan(child: Icon(
                         Icons.person,
                         size: 16,
                       )),
                       // Dapatkan juga orangnya
-                      TextSpan(text: " ${post.fields.author}"),
+                      TextSpan(text: " ${post.author.username}"),
                     ]
                   )
                 ),
               ),
              MarkdownBody(
-                data: post.fields.content.substring(0, min(120, post.fields.content.length)),
+                data: post.content.substring(0, min(120, post.content.length)),
               ),
             ],
           )

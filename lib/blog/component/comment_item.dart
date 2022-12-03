@@ -24,7 +24,7 @@ class CommentItem extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(bottom: 8),
               child: Text(
-                comment.fields.author.username,
+                comment.author.username,
               ),
             ),
             Container(
@@ -36,13 +36,13 @@ class CommentItem extends StatelessWidget {
                       Icons.calendar_today,
                       size: 16,
                     )),
-                    TextSpan(text: " ${DateFormat("dd MMMM y").format(comment.fields.createdTimestamp)}"),
+                    TextSpan(text: " ${DateFormat("dd MMMM y").format(comment.createdTimestamp)}"),
                   ]
                 )
               ),
             ),
             MarkdownBody(
-              data: comment.fields.content,
+              data: comment.content,
             ),
           ],
         )

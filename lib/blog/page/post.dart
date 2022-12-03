@@ -95,7 +95,7 @@ class _PostPageState extends State<PostPage> {
                       Container(
                         margin: const EdgeInsets.only(bottom: 8),
                         child: Text(
-                          "${snapshot.data!.fields.title}",
+                          "${snapshot.data!.title}",
                           style: const TextStyle(
                             fontSize: 32.0,
                             fontWeight: FontWeight.w700,
@@ -111,19 +111,19 @@ class _PostPageState extends State<PostPage> {
                                 Icons.calendar_today,
                                 size: 16,
                               )),
-                              TextSpan(text: " ${DateFormat("dd MMMM y").format(snapshot.data!.fields.createdTimestamp)} • "),
+                              TextSpan(text: " ${DateFormat("dd MMMM y").format(snapshot.data!.createdTimestamp)} • "),
                               const WidgetSpan(child: Icon(
                                 Icons.person,
                                 size: 16,
                               )),
                               // Dapatkan juga orangnya
-                              TextSpan(text: " ${snapshot.data!.fields.author}"),
+                              TextSpan(text: " ${snapshot.data!.author.username}"),
                             ]
                           )
                         ),
                       ),
                       MarkdownBody(
-                        data: snapshot.data!.fields.content,
+                        data: snapshot.data!.content,
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 8),
