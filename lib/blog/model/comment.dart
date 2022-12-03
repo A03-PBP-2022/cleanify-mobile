@@ -93,7 +93,7 @@ class Author {
 
 Future<List<Comment>> fetchComments(int postId, int pageKey) async {
 
-  var url = Uri.parse('https://$endpointDomain/blog/api2/posts/$postId/comments?page=$pageKey');
+  var url = Uri.parse('$endpointDomain/blog/api2/posts/$postId/comments?page=$pageKey');
 
   final response = await http.get(
     url,

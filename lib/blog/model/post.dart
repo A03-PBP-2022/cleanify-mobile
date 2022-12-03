@@ -95,7 +95,7 @@ class Author {
 }
 Future<List<Post>> fetchBlogPostIndex(int pageKey) async {
 
-  var url = Uri.parse('http://$endpointDomain/blog/api2/posts');
+  var url = Uri.parse('$endpointDomain/blog/api2/posts');
 
   final response = await http.get(
     url,
@@ -115,7 +115,7 @@ Future<List<Post>> fetchBlogPostIndex(int pageKey) async {
 }
 
 Future<Post> fetchPost(int postId) async {
-  var url = Uri.parse('http://$endpointDomain/blog/api2/posts/$postId');
+  var url = Uri.parse('$endpointDomain/blog/api2/posts/$postId');
 
   final response = await http.get(
     url,
