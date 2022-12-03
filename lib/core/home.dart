@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: const EdgeInsets.all(8),
               child: const Text(
-                'Mulai menjelajahi aplikasi ini dengan membuka drawer disamping.',
+                'Anda dapat mulai aplikasi ini dengan membuka drawer disamping.',
               ),
             ),
             Container(
