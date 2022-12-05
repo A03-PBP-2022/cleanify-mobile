@@ -49,6 +49,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => LoginPage()),
               );
             },
+            dense: true,
           ),
           ListTile(
             title: Text.rich(
@@ -92,6 +93,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 color: Colors.black54,
               )
             ),
+            dense: true,
           ),
           ListTile(
             title: const Text('Pelaporan Wilayah Sampah'),
@@ -110,7 +112,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => const ListReportPage()),
               );
             },
-            dense: true,
           ),
           const ListTile(
             title: Text(
@@ -120,6 +121,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 color: Colors.black54,
               )
             ),
+            dense: true,
           ),
           ListTile(
             title: const Text('List Bank Sampah'),
@@ -129,7 +131,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => const BankSampahMyPage()),
               );
             },
-            dense: true,
           ),
           ListTile(
             title: const Text('Form Bank Sampah'),
@@ -139,7 +140,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => const BankSampahFormPage()),
               );
             },
-            dense: true,
           ),
           ListTile(
             title: const Text('My Bank Sampah'),
@@ -149,7 +149,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => const BankSampahJsonPage()),
               );
             },
-            dense: true,
           ),
           const ListTile(
             title: Text(
@@ -159,6 +158,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 color: Colors.black54,
               )
             ),
+            dense: true,
           ),
           ListTile(
             title: const Text('FAQ'),
@@ -177,6 +177,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 color: Colors.black54,
               )
             ),
+            dense: true,
           ),
           ListTile(
             title: const Text('Index'),
@@ -186,7 +187,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 MaterialPageRoute(builder: (context) => const BlogIndexPage()),
               );
             },
-            dense: true,
           ),
         ],
       ),
