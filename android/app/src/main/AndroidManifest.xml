@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="id.ac.ui.cs.cleanify">
+    package="com.example.cleanify">
    <application
-        android:label="Cleanify"
+        android:label="cleanify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

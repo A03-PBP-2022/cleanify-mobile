@@ -1,3 +1,4 @@
+import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
@@ -134,6 +135,15 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FaqPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('LOGIN'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) =>  LoginPage()),
               );
             },
           ),
