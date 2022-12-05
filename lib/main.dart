@@ -74,7 +74,7 @@ class _MainPageState extends State<MainPage> {
         child: ElevatedButton(
           onPressed: () async {
             final response = await http.get(
-              Uri.parse("https://cleanifyid.up.railway.app/auth/login/"),
+              Uri.parse("https://cleanifyid.up.railway.app/auth/api/login"),
                 headers: <String, String>{
                   'Content-Type': 'application/json;'
                 },
