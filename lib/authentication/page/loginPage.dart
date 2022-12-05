@@ -31,6 +31,7 @@ class _State extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    final user = context.watch<User>();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Login'),
@@ -158,12 +159,27 @@ class _State extends State<LoginPage> {
                                             'password': _controllerPassword.text
                                           });
                                       // _controllerPassword.text);
-                                      isFailed = false;
+                                      setState(() {
+                                        isFailed = false;
+                                      });
+                                      print(request.jsonData);
                                       if (request.loggedIn) {
                                         Navigator.pop(context);
                                         print("Logged in!");
+                                        final info = request.jsonData['info'];
+                                        user.email = info['email'];
+                                        user.username = info['username'];
+                                        user.name = info['name'];
+                                        user.phoneNumber = info['phoneNumber'];
+                                        user.address = info['address'];
+                                        user.role = info['role'];
+                                        user.permissions = (info['permissions'] as List).map((item) => item as String).toList();
+                                        // print(8);
+                                        // print(user.email);
                                       } else {
-                                        isFailed = true;
+                                        setState(() {
+                                          isFailed = true;
+                                        });
                                         print("Failed!");
                                         // showAlertDialog(context);
                                       }

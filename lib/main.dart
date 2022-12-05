@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:cleanify/authentication/page/loginPage.dart';
+import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/blog/page/index.dart';
@@ -18,11 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget home = const HomePage();
     // Widget home = const BlogIndexPage();
-    return Provider(
-        create: (_) {
-            CookieRequest request = CookieRequest();
-            return request;
-        },
+    return MultiProvider(
+        providers: [
+          Provider<CookieRequest>(create: (_) => CookieRequest()),
+          Provider<User>(create: (_) => User())
+        ],
         child: MaterialApp(
           title: 'Cleanify',
           theme: ThemeData(

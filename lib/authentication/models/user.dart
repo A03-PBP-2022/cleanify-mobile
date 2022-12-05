@@ -1,37 +1,49 @@
+// To parse this JSON data, do
+//
+//     final user = userFromJson(jsonString);
+
 import 'dart:convert';
-import 'dart:core';
+
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
+String userToJson(User data) => json.encode(data.toJson());
 
 class User {
-  String? email = "";
-  String? username = "";
-  String? fullName = "";
-  String? phoneNumber = "";
-  String? address = "";
+    User({
+        this.email,
+        this.username,
+        this.name,
+        this.phoneNumber,
+        this.address,
+        this.role = 'anonymous',
+        this.permissions = const [],
+    });
 
+    String? email;
+    String? username;
+    String? name;
+    String? phoneNumber;
+    String? address;
+    String role = 'anonymous';
+    List<String> permissions;
 
-  // bool? is_user;
-  // bool? is_crew;
-
-  User({
-    this.email,
-    this.username,
-    this.fullName,
-    this.phoneNumber,
-    this.address,
-
-    // this.is_user,
-    // this.is_crew,
-  });
-
-  factory User.fromJson(Map<String, dynamic> data) {
-    return User(
-        email: data["data"]["data"]["email"],
-        username: data["data"]["data"]["username"],
-        fullName: data["data"]["data"]["name"],
-        phoneNumber: data["data"]["data"]["phoneNumber"],
-        address: data["data"]["data"]["address"],
-        // is_user: data["data"]["data"]["is_user"],
-        // is_crew: data["data"]["data"]["is_crew"],
+    factory User.fromJson(Map<String, dynamic> json) => User(
+        email: json["email"],
+        username: json["username"],
+        name: json["name"],
+        phoneNumber: json["phoneNumber"],
+        address: json["address"],
+        role: json["role"],
+        permissions: List<String>.from(json["permissions"].map((x) => x)),
     );
-  }
+
+    Map<String, dynamic> toJson() => {
+        "email": email,
+        "username": username,
+        "name": name,
+        "phoneNumber": phoneNumber,
+        "address": address,
+        "role": role,
+        "permissions": List<dynamic>.from(permissions.map((x) => x)),
+    };
 }
