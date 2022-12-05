@@ -133,8 +133,7 @@ class _State extends State<LoginPage> {
                                         .validate()) {
                                       //const url = "http://127.0.0.1:8000/auth/login_flutter/";
                                       const url =
-                                          "https://cleanifyid.up.railway.app/auth/login/";
-
+                                          "https://cleanifyid.up.railway.app/auth/api/login";
                                       final response = await request.login(
                                           url, _controllerEmail.text);
                                       // _controllerPassword.text);
