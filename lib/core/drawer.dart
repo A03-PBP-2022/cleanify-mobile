@@ -141,7 +141,7 @@ class GlobalDrawer extends StatelessWidget {
           ListTile(
             title: const Text('LOGIN'),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) =>  LoginPage()),
               );

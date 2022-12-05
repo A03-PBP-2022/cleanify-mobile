@@ -135,13 +135,18 @@ class _State extends State<LoginPage> {
                                       const url =
                                           "https://cleanifyid.up.railway.app/auth/api/login";
                                       final response = await request.login(
-                                          url, _controllerEmail.text);
+                                          url, {
+                                            'email': _controllerEmail.text,
+                                            'password': _controllerPassword.text
+                                          });
                                       // _controllerPassword.text);
-                                      // if (request.loggedIn) {
-                                      //   showAlertDialog2(context);
-                                      // } else {
-                                      //   showAlertDialog(context);
-                                      // }
+                                      if (request.loggedIn) {
+                                        Navigator.pop(context);
+                                        print("Logged in!");
+                                      } else {
+                                        print("Failed!");
+                                        // showAlertDialog(context);
+                                      }
                                     } else {
                                       print("tidak valid");
                                     }
