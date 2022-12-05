@@ -1,3 +1,4 @@
+import 'package:cleanify/core/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/authentication/page/registerPage.dart';
 import 'package:http/http.dart' as http;
