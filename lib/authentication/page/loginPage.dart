@@ -19,6 +19,7 @@ class _State extends State<LoginPage> {
   final _loginFormKey = GlobalKey<FormState>();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  bool isFailed = false;
 
   bool isPasswordVisible = false;
   void togglePasswordView() {
@@ -48,10 +49,24 @@ class _State extends State<LoginPage> {
                           fontWeight: FontWeight.w500,
                           fontSize: 22),
                     )),
+                if (isFailed) Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    decoration: BoxDecoration(
+                      color: Colors.red[900],
+                      borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: const Text(
+                      'Login failed! Re-check your credentials!',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14),
+                    )),
                 Form(
                     key: _loginFormKey,
                     child: Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.symmetric(vertical: 20),
                         child: Column(
                           children: [
                             Container(
@@ -127,6 +142,9 @@ class _State extends State<LoginPage> {
                                     foregroundColor:
                                         MaterialStateProperty.all<Color>(
                                             Colors.white),
+                                    padding: MaterialStateProperty.all<EdgeInsets>(
+                                        const EdgeInsets.fromLTRB(20, 10, 20, 10)
+                                    ),
                                   ),
                                   onPressed: () async {
                                     if (_loginFormKey.currentState!
@@ -140,10 +158,12 @@ class _State extends State<LoginPage> {
                                             'password': _controllerPassword.text
                                           });
                                       // _controllerPassword.text);
+                                      isFailed = false;
                                       if (request.loggedIn) {
                                         Navigator.pop(context);
                                         print("Logged in!");
                                       } else {
+                                        isFailed = true;
                                         print("Failed!");
                                         // showAlertDialog(context);
                                       }
@@ -151,7 +171,7 @@ class _State extends State<LoginPage> {
                                       print("tidak valid");
                                     }
                                   },
-                                  child: Text("LOGIN"),
+                                  child: Text("Login"),
                                 ))
                           ],
                         ))),
@@ -174,61 +194,5 @@ class _State extends State<LoginPage> {
                 )
               ],
             )));
-  }
-}
-
-showAlertDialog(BuildContext context) {
-  // set up the button
-  Widget okButton = TextButton(
-    child: Text("Coba Lagi"),
-    onPressed: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
-    },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Gagal!"),
-    content: Text("Email dan password tidak cocok!"),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-
-  showAlertDialog2(BuildContext context) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("Close"),
-      onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyApp()));
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert1 = AlertDialog(
-      title: Text("Selamat!"),
-      content: Text("Anda berhasil login"),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
   }
 }
