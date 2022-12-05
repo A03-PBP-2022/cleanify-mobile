@@ -1,3 +1,4 @@
+import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
@@ -8,17 +9,47 @@ import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
+import 'package:provider/provider.dart';
 
-class GlobalDrawer extends StatelessWidget {
-  const GlobalDrawer({
-    Key? key,
-  }) : super(key: key);
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:cleanify/core/drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class GlobalDrawer extends StatefulWidget {
+  const GlobalDrawer({super.key});
+
+  final String title = 'Cleanify';
 
   @override
+  State<GlobalDrawer> createState() => _GlobalDrawerState();
+}
+class _GlobalDrawerState extends State<GlobalDrawer> {
+  bool isExpanded = false;
+  @override
   Widget build(BuildContext context) {
+    final user = context.watch<User>();
     return Drawer(
-      child: Column(
+      child: ListView(
         children: [
+          UserAccountsDrawerHeader(
+            accountName: Text(user.role == "anonymous" ? "Anonymous" : user.name ?? ""), 
+            accountEmail: Text(user.role == "anonymous" ? "Click to log in." : user.email ?? ""),
+            onDetailsPressed:() {
+              setState(() {
+                isExpanded = !isExpanded;
+              });
+            },
+          ),
+          if (isExpanded) ListTile(
+            title: const Text('Login'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
+          ),
           ListTile(
             title: Text.rich(
               TextSpan(
@@ -47,9 +78,9 @@ class GlobalDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(builder: (context) =>  LoginPage()),
               );
             },
           ),
@@ -135,15 +166,6 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FaqPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('LOGIN'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  LoginPage()),
               );
             },
           ),

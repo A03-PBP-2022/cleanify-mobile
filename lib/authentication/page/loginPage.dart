@@ -164,7 +164,6 @@ class _State extends State<LoginPage> {
                                       });
                                       print(request.jsonData);
                                       if (request.loggedIn) {
-                                        Navigator.pop(context);
                                         print("Logged in!");
                                         final info = request.jsonData['info'];
                                         user.email = info['email'];
@@ -176,6 +175,11 @@ class _State extends State<LoginPage> {
                                         user.permissions = (info['permissions'] as List).map((item) => item as String).toList();
                                         // print(8);
                                         // print(user.email);
+                                        Navigator.pop(context);
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const HomePage()),
+                                        );
                                       } else {
                                         setState(() {
                                           isFailed = true;
