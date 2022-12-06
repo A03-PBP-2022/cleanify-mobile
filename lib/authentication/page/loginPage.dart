@@ -151,7 +151,6 @@ class _State extends State<LoginPage> {
                                   onPressed: () async {
                                     if (_loginFormKey.currentState!
                                         .validate()) {
-                                      //const url = "http://127.0.0.1:8000/auth/login_flutter/";
                                       const url =
                                           "https://cleanifyid.up.railway.app/auth/api/login";
                                       final response = await request.login(
@@ -174,8 +173,6 @@ class _State extends State<LoginPage> {
                                         user.address = info['address'];
                                         user.role = info['role'];
                                         user.permissions = (info['permissions'] as List).map((item) => item as String).toList();
-                                        // print(8);
-                                        // print(user.email);
                                         Navigator.pop(context);
                                         Navigator.pushReplacement(
                                           context,
