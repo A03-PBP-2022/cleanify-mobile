@@ -34,6 +34,9 @@ class _State extends State<RegisterPage> {
     });
   }
 
+  String role = 'User';
+  List<String> listRole = ['User', 'Crew'];
+
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
@@ -205,6 +208,27 @@ class _State extends State<RegisterPage> {
                   },
                 ),
               ),
+              ListTile(
+                  leading: const Icon(Icons.class_),
+                  title: const Text(
+                    'Role',
+                  ),
+                  trailing: DropdownButton(
+                    value: role,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: listRole.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        role = newValue!;
+                      });
+                    },
+                  ),
+                ),
               Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
@@ -237,10 +261,7 @@ class _State extends State<RegisterPage> {
                           fixedSize: const Size(500, 30),
                           textStyle: const TextStyle(
                             color: Colors.white,
-                    )
-                  )
-                )
-              )
+                          ))))
             ]),
           ),
         ),
