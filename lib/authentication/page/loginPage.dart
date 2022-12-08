@@ -12,6 +12,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 // import 'package:tkuas/utils/cookie_request.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routeName = '/loginPage';
   @override
   _State createState() => _State();
 }

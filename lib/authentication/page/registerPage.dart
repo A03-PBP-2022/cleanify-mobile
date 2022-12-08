@@ -247,6 +247,24 @@ class _State extends State<RegisterPage> {
                             'address': controllerAddress.text,
                             'role' : role,
                           });
+
+                        if(response['status']) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text(
+                                "Account has been successfully registered!"),
+                          ));
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text(
+                                "An error occured, please try again."),
+                          ));
+                        }
                           // _controllerPassword.text);
                           setState(() {
                             isFailed = false;
@@ -262,8 +280,12 @@ class _State extends State<RegisterPage> {
                           fixedSize: const Size(500, 30),
                           textStyle: const TextStyle(
                             color: Colors.white,
-                          ))))
-            ]),
+                          )
+                        )
+                      )
+                    )
+                  ]),
+        
           ),
         ),
       ),
@@ -271,58 +293,3 @@ class _State extends State<RegisterPage> {
   }
 }
 
-showAlertDialog(BuildContext context) {
-  // set up the button
-  Widget okButton = TextButton(
-    child: Text("Coba Lagi"),
-    onPressed: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => RegisterPage()));
-    },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Gagal!"),
-    content: Text("Silakan gunakan email dan username lain!"),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
-
-showAlertDialog2(BuildContext context) {
-  // set up the button
-  Widget okButton = TextButton(
-    child: Text("OK"),
-    onPressed: () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
-    },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Selamat!"),
-    content: Text("Akun Anda berhasil dibuat!\nSilakan login"),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
