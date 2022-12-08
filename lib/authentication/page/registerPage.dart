@@ -245,6 +245,7 @@ class _State extends State<RegisterPage> {
                             'name': controllerFullName.text,
                             'phoneNumber': controllerPhoneNumber.text,
                             'address': controllerAddress.text,
+                            'role' : role,
                           });
                           // _controllerPassword.text);
                           setState(() {

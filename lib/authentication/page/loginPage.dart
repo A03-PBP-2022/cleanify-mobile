@@ -91,7 +91,7 @@ class _State extends State<LoginPage> {
                                     AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "Email tidak boleh kosong";
+                                    return "Email cannot be empty";
                                   }
                                   return null;
                                 },
@@ -127,7 +127,7 @@ class _State extends State<LoginPage> {
                                     AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "Password tidak boleh kosong";
+                                    return "Password cannot be empty";
                                   }
                                   return null;
                                 },
