@@ -5,6 +5,28 @@ on:
   pull_request:
 
 jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+          
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze app
+        run: flutter analyze
+
   web:
     name: Web
     runs-on: ubuntu-latest
@@ -67,13 +89,20 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Generate Java keystore
+        env: 
+          KEY_P12: ${{ secrets.KEY_P12 }}
+        run: echo "$KEY_P12" | base64 --decode > release-keystore.p12
+
       - name: Install dependencies
         run: flutter pub get
       - name: Build app
+        env:
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: flutter build apk
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: android
-          path: ./build/app/outputs/apk/release/
+          path: ./build/app/outputs/flutter-apk/*
