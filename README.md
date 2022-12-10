@@ -1,21 +1,34 @@
 # Cleanify (di mobile)
 
 [![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
-[![Status build di master](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logo=github-actions&logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
-[![Status build di dev](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logo=github-actions&logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
-[![Aplikasi di GitHub Pages](https://img.shields.io/badge/web-a03--pbp--2022.github.io%2Fcleanify--mobile-blue?logo=github&logoColor=white)](https://a03-pbp-2022.github.io/cleanify-mobile/)
+[![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Release%20app?logo=github&logoColor=white&label=release)](https://github.com/A03-PBP-2022/proyek/actions/workflows/release.yml)
+![App Center status]
 
-## 🔽 Download
+Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
+
+## 📲 Gunakan
+
+### ⬇ Unduh
 
 | Status | Android (*.apk) |  
 | -: | - |
-| [![Master build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/master/android.zip)
-| [![Dev build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/dev/android.zip)
+| [![Master build status]](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![Download from nightly.link]](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/master/android.zip)
+| [![Dev build status]](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![Download from nightly.link]](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/dev/android.zip)
+| [![Release status]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public) | [![Download from GitHub]](https://github.com/A03-PBP-2022/cleanify-mobile/releases/latest)
+| [![App Center status]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public) | [![Download from App Center]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public)
 
-<!--
-Nanti akan diganti dengan link ke APK langsung. Jangan dulu.
-🌐 Aplikasi Heroku: https://cleanifyid.herokuapp.com/
--->
+[Master build status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logo=github-actions&logoColor=white&label=master
+[Dev build status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logo=github-actions&logoColor=white&label=dev
+[Release status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Release%20app?logo=github&logoColor=white&label=release
+[App center status]: https://img.shields.io/visual-studio-app-center/builds/A03-PBP-2022/Cleanify/master/ca4d4f04292771289c9ec1897f4a1840548d936c?label=appcenter&logo=azure-pipelines
+[Download from nightly.link]: https://img.shields.io/badge/nightly.link-download-540054
+[Download from GitHub]: https://img.shields.io/github/v/release/A03-PBP-2022/cleanify-mobile?label=github&sort=semver
+[Download from App Center]: https://img.shields.io/visual-studio-app-center/releases/version/A03-PBP-2022/Cleanify/ca4d4f04292771289c9ec1897f4a1840548d936c?label=appcenter
+
+### 🌐 Web
+
+Aplikasi *mobile* Cleanify dapat diakses di https://a03-pbp-2022.github.io/cleanify-mobile/.
+
 
 ## 👨‍👨‍👧‍👧 Anggota
 
@@ -25,9 +38,6 @@ Nanti akan diganti dengan link ke APK langsung. Jangan dulu.
 4. Muhammad Alif Ilham (2106751341, [@Alifilhmm](https://github.com/Alifilhmm))
 5. Muhammad Rafi Adiwibowo (2106653855, [@rafiadiwibowo](https://github.com/rafiadiwibowo))
 
-## 🧠 Topik
-
-Aplikasi ini merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
 
 ### 💢 Manfaat
 

@@ -74,20 +74,20 @@ class Comment {
 class Author {
     Author({
         required this.username,
-        required this.nama,
+        required this.name,
     });
 
     String username;
-    String nama;
+    String name;
 
     factory Author.fromJson(Map<String, dynamic> json) => Author(
         username: json["username"],
-        nama: json["nama"],
+        name: json["name"],
     );
 
     Map<String, dynamic> toJson() => {
         "username": username,
-        "nama": nama,
+        "name": name,
     };
 }
 

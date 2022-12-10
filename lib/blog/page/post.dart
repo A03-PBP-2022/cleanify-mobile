@@ -35,15 +35,14 @@ class _PostPageState extends State<PostPage> {
     _comments = [];
     _isLastPage = false;
     _loading = true;
-    fetchComments2();
+    fetchCommentsState();
     _error = false;
     _scrollController = ScrollController();
   }
 
-  Future<void> fetchComments2() async {
+  Future<void> fetchCommentsState() async {
     try {
       List<Comment> commentList = await fetchComments(widget.postId, _pageNumber);
-
       if (mounted) {
         setState(() {
           _isLastPage = commentList.length < _numberOfPostsPerRequest;
@@ -71,7 +70,7 @@ class _PostPageState extends State<PostPage> {
 
       if ((_scrollController.position.pixels > nextPageTrigger) && !_loading && !_error && !_isLastPage) {
         _loading = true;
-        fetchComments2();
+        fetchCommentsState();
       }
     });
 
