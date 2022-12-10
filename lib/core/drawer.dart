@@ -81,7 +81,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>  LoginPage()),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             },
           ),
