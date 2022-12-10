@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/laporsampah/model/laporan.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Laporan>> fetchMyWatchList() async {
-    var url = Uri.parse('https://cleanifyid.up.railway.app/report/json/');
+    var url = Uri.parse('$endpointDomain/report/json/');
     var response = await http.get(
     url,
     headers: {
