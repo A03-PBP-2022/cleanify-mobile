@@ -1,4 +1,4 @@
-import 'package:cleanify/blog/consts.dart';
+import 'package:cleanify/consts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
