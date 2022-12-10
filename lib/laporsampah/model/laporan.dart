@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<Laporan> laporanFromJson(String str) => List<Laporan>.from(json.decode(str).map((x) => Laporan.fromJson(x)));
+List<Fields> laporanFromJson(String str) => List<Fields>.from(json.decode(str).map((x) => Fields.fromJson(x)));
 
-String laporanToJson(List<Laporan> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String laporanToJson(List<Fields> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Report {
     Report({
@@ -17,12 +17,12 @@ class Report {
 
     String model;
     int pk;
-    Laporan fields;
+    Fields fields;
 
     factory Report.fromJson(Map<String, dynamic> json) => Report(
         model: json["model"],
         pk: json["pk"],
-        fields: Laporan.fromJson(json["fields"]),
+        fields: Fields.fromJson(json["fields"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -32,8 +32,8 @@ class Report {
     };
 }
 
-class Laporan {
-    Laporan({
+class Fields {
+    Fields({
         required this.date,
         required this.location,
         required this.urgency,
@@ -47,7 +47,7 @@ class Laporan {
     String description;
     String contact;
 
-    factory Laporan.fromJson(Map<String, dynamic> json) => Laporan(
+    factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         date: json["date"],
         location: json["location"],
         urgency: json["urgency"],

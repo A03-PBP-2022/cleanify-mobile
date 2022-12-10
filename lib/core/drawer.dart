@@ -7,8 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
-import 'package:cleanify/laporsampah/page/form_report.dart';
-import 'package:cleanify/laporsampah/page/list_report.dart';
+// import 'package:cleanify/laporsampah/page/form_report.dart';
+// import 'package:cleanify/laporsampah/page/list_report.dart';
+import 'package:cleanify/laporsampah/page/formtwo.dart';
+import 'package:cleanify/laporsampah/page/listtwo.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/gestures.dart';
