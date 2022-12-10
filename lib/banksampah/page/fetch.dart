@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<BankSampah>> fetchMyWatchList() async {
+Future<List<BankSampah>> fetchMyBankSampah() async {
     var url = Uri.parse('https://cleanifyid.up.railway.app/bank/json/');
     var response = await http.get(
     url,
@@ -16,11 +16,11 @@ Future<List<BankSampah>> fetchMyWatchList() async {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object ToDo
-    List<BankSampah> listMyWatchList = [];
+    List<BankSampah> listMyBankSampah = [];
     for (var d in data) {
       if (d != null) {
-          listMyWatchList.add(BankSampah.fromJson(d));
+          listMyBankSampah.add(BankSampah.fromJson(d));
         }
     }
-    return listMyWatchList;
+    return listMyBankSampah;
 }
