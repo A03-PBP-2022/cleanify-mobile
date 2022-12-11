@@ -13,6 +13,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 // import 'package:tkuas/utils/cookie_request.dart';
 
 class LoginPage extends StatefulWidget {
+  static const routeName = '/loginPage';
   @override
   _State createState() => _State();
 }
@@ -52,20 +53,20 @@ class _State extends State<LoginPage> {
                           fontWeight: FontWeight.w500,
                           fontSize: 22),
                     )),
-                if (isFailed) Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    decoration: BoxDecoration(
-                      color: Colors.red[900],
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: const Text(
-                      'Login failed! Re-check your credentials!',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14),
-                    )),
+                if (isFailed)
+                  Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                      decoration: BoxDecoration(
+                          color: Colors.red[900],
+                          borderRadius: BorderRadius.circular(5)),
+                      child: const Text(
+                        'Login failed! Re-check your credentials!',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14),
+                      )),
                 Form(
                     key: _loginFormKey,
                     child: Container(
@@ -92,7 +93,7 @@ class _State extends State<LoginPage> {
                                     AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "Email tidak boleh kosong";
+                                    return "Email cannot be empty";
                                   }
                                   return null;
                                 },
@@ -128,7 +129,7 @@ class _State extends State<LoginPage> {
                                     AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "Password tidak boleh kosong";
+                                    return "Password cannot be empty";
                                   }
                                   return null;
                                 },
@@ -145,21 +146,21 @@ class _State extends State<LoginPage> {
                                     foregroundColor:
                                         MaterialStateProperty.all<Color>(
                                             Colors.white),
-                                    padding: MaterialStateProperty.all<EdgeInsets>(
-                                        const EdgeInsets.fromLTRB(20, 10, 20, 10)
-                                    ),
+                                    padding:
+                                        MaterialStateProperty.all<EdgeInsets>(
+                                            const EdgeInsets.fromLTRB(
+                                                20, 10, 20, 10)),
                                   ),
                                   onPressed: () async {
                                     if (_loginFormKey.currentState!
                                         .validate()) {
-                                      //const url = "http://127.0.0.1:8000/auth/login_flutter/";
                                       const url =
                                           "$endpointDomain/auth/api/login";
                                       final response = await request.login(
                                           url, {
-                                            'email': _controllerEmail.text,
-                                            'password': _controllerPassword.text
-                                          });
+                                        'email': _controllerEmail.text,
+                                        'password': _controllerPassword.text
+                                      });
                                       // _controllerPassword.text);
                                       setState(() {
                                         isFailed = false;
@@ -174,14 +175,23 @@ class _State extends State<LoginPage> {
                                         user.phoneNumber = info['phoneNumber'];
                                         user.address = info['address'];
                                         user.role = info['role'];
-                                        user.permissions = (info['permissions'] as List).map((item) => item as String).toList();
-                                        // print(8);
-                                        // print(user.email);
-                                        Navigator.pop(context);
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => homePage),
-                                        );
+                                        user.permissions =
+                                            (info['permissions'] as List)
+                                                .map((item) => item as String)
+                                                .toList();
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder:
+                                                        (context) =>
+                                                            const HomePage()),
+                                                (Route<dynamic> route) =>
+                                                    false);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                          content:
+                                              Text("Successfully logged in!"),
+                                        ));
                                       } else {
                                         setState(() {
                                           isFailed = true;
