@@ -181,7 +181,7 @@ class _PostPageState extends State<PostPage> {
                                       _comments.insert(0, newComment);
                                     });
                                   },
-                                  child: const Text('Create'),
+                                  child: const Text('Send'),
                                 ),
                               ],
                             ), 
