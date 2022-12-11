@@ -1,11 +1,12 @@
+import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:intl/intl.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
-List<ListBankSampah> listData = [];
+List<BankSampahJsonPage> listData = [];
 
 
 class BankSampahFormPage extends StatefulWidget {
@@ -26,6 +27,9 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
 
     @override
     Widget build(BuildContext context) {
+        final request = context.watch<CookieRequest>();
+        final user = context.watch<User>();
+
         return Scaffold(
             appBar: AppBar(
                 title: Text('Form Bank Sampah'),
@@ -166,49 +170,23 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                   ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.green),
-                  ), onPressed: () {
+                  ), onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      if (_pilihan == "Organik") {
-                          ListBankSampah data = ListBankSampah(_dateTime!, _contact.toString(), _address.toString(), _pilihan.toString());
-                          listData.add(data);
-                      } else if (_pilihan == "Anorganik") {
-                          ListBankSampah data = ListBankSampah(_dateTime!, _contact.toString(), _address.toString(), _pilihan.toString());
-                          listData.add(data);
-                      } else if (_pilihan == "B3") {
-                          ListBankSampah data = ListBankSampah(_dateTime!, _contact.toString(), _address.toString(), _pilihan.toString());
-                          listData.add(data);
-                      } else {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                          return Dialog(
-                              shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              ),
-                              elevation: 15,
-                              child: Container(
-                              child: ListView(
-                                  padding: const EdgeInsets.only(top: 20, bottom: 20),
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                  Center(child: const Text('Type Belum Dipilih' + '\n',
-                                      style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20))),
-                                  // TODO: Munculkan informasi yang didapat dari form
-                                  TextButton(
-                                      onPressed: () {
-                                      Navigator.pop(context);
-                                      },
-                                      child: Text('Kembali'),
-                                  ), 
-                                  ],
-                              ),
-                              ),
-                          );
-                          },
+                      const url = 'https://cleanifyid.up.railway.app/bank/createbank_flutter/';
+                      final response = await request.post(url, {
+                        'user' :  user.toString(),
+                        'tanggal': _dateTime.toString(),
+                        'kontak': _contact.toString(),
+                        'alamat': _address.toString(),
+                        'jenis': _pilihan.toString(),
+                      });
+                      print(response);
+
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (context) => BankSampahFormPage()) 
                       );
-                      }
                     }
                   }
                   )

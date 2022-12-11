@@ -1,8 +1,5 @@
-import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
 
 class ItemBankSampah extends StatelessWidget {
     const ItemBankSampah(
@@ -19,22 +16,18 @@ class ItemBankSampah extends StatelessWidget {
     final DateTime tanggal;
     final String kontak;
 
-    @override
+    @override 
     Widget build(BuildContext context) {
-      final request = context.watch<CookieRequest>();
-      final user = context.watch<User>();
 
       return Scaffold(
-        appBar: AppBar(
-            title: const Text('Item'),
-        ),
+        appBar: AppBar(),
         drawer: const GlobalDrawer(),
         body: Container(
               child: ListView(
                 padding: const EdgeInsets.all(20.0),
                 shrinkWrap: true,
                 children: <Widget>[
-                  if (user.permissions.contains('view_bank'))  Center( 
+                  Center( 
                     child: Text(user.toString() + '\n',
                       style: const TextStyle(
                       color: Color.fromARGB(255, 0, 0, 0),

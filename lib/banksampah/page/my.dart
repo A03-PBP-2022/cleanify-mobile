@@ -1,14 +1,7 @@
-import 'package:cleanify/authentication/models/user.dart';
-import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:cleanify/banksampah/page/item.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/banksampah/page/fetch.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:provider/provider.dart';
 
 class BankSampahJsonPage extends StatefulWidget {
     const BankSampahJsonPage({Key? key}) : super(key: key);
@@ -18,13 +11,10 @@ class BankSampahJsonPage extends StatefulWidget {
 }
 
 class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
-    final _loginFormKey = GlobalKey<FormState>();
-    bool isFailed = false;
+
 
   @override
   Widget build(BuildContext context) {
-    final request = context.watch<CookieRequest>();
-    final user = context.watch<User>();
     
     return Scaffold(
         appBar: AppBar(
@@ -64,7 +54,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                           borderRadius: BorderRadius.circular(8.0),
                       ),
                       title: Text(
-                              "${snapshot.data![index].fields.title}",
+                              "${snapshot.data![index].fields.alamat}",
                               style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,

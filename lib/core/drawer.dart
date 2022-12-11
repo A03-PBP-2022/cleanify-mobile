@@ -5,7 +5,6 @@ import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
@@ -122,15 +121,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               )
             ),
             dense: true,
-          ),
-          ListTile(
-            title: const Text('List Bank Sampah'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const BankSampahMyPage()),
-              );
-            },
           ),
           ListTile(
             title: const Text('Form Bank Sampah'),
