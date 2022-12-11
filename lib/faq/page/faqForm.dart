@@ -29,17 +29,19 @@ class _FaqFormState extends State<FAQFormPage> {
   final TextEditingController _in = TextEditingController();
   final TextEditingController _in2 = TextEditingController();
 
-  void submit(String title, String description) async {
+  void submit(String q, String a) async {
     var url = Uri.parse('https://cleanifyid.up.railway.app/faq/addFlutter/');
     var map = <String, dynamic>{};
     map["q"] = q;
     map["a"] = a;
     var response = await http.post(url, body: map);
     print(response.body);
-    onPressed(BuildContext context) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Data sedang diproses. Mohon tunggu...')));
-    }
+    // onPressed(BuildContext context) {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const FAQFormPage()),
+    //   );
+    // }
   }
 
   @override
@@ -102,7 +104,7 @@ class _FaqFormState extends State<FAQFormPage> {
                   alignment: Alignment.bottomCenter,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                         padding: const EdgeInsets.all(15.0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         alignment: Alignment.center),
@@ -110,9 +112,13 @@ class _FaqFormState extends State<FAQFormPage> {
                       if (_formKey.currentState!.validate()) {
                         submit(q!, a!);
                       }
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const FAQFormPage()),
+                      // );
                     },
                     child: const Text("Add",
-                        style: TextStyle(color: Colors.green)),
+                        style: TextStyle(color: Colors.white)),
                   ),
                 ),
               ],
