@@ -71,7 +71,7 @@ class _FaqFormState extends State<FAQFormPage> {
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat nama diketik
+                    // Menambahkan behavior saat  diketik
                     onChanged: (String? value) {
                       setState(() {
                         q = value!;
@@ -92,10 +92,10 @@ class _FaqFormState extends State<FAQFormPage> {
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat nama diketik
-                    onChanged: (String? desc) {
+                    // Menambahkan behavior saat diketik
+                    onChanged: (String? ans) {
                       setState(() {
-                        a = desc!;
+                        a = ans!;
                       });
                     },
                   ),
@@ -112,10 +112,10 @@ class _FaqFormState extends State<FAQFormPage> {
                       if (_formKey.currentState!.validate()) {
                         submit(q!, a!);
                       }
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const FAQFormPage()),
-                      // );
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FAQFormPage()));
                     },
                     child: const Text("Add",
                         style: TextStyle(color: Colors.white)),
