@@ -1,5 +1,6 @@
 import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/authentication/page/loginPage.dart';
+import 'package:cleanify/authentication/page/registerPage.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
@@ -36,7 +37,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
     final request = context.watch<CookieRequest>();
     final user = context.watch<User>();
 
-    Future<void> Logout(BuildContext context) async {
+    Future<void> logout(BuildContext context, CookieRequest request) async {
       const url = "https://cleanifyid.up.railway.app/auth/api/logout";
       final response = await request.logout(url);
       print(response);
@@ -44,6 +45,16 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("Successfully logged out!"),
         ));
+        user.email = null;
+        user.username = null;
+        user.name = null;
+        user.phoneNumber = null;
+        user.address = null;
+        user.role = 'anonymous';
+        user.permissions = [];
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const HomePage()),
+            (Route<dynamic> route) => false);
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => LoginPage(),
         ));
@@ -69,7 +80,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               });
             },
           ),
-          if (isExpanded)
+          if (isExpanded && !request.loggedIn)
             ListTile(
               title: const Text('Login'),
               onTap: () {
@@ -77,6 +88,29 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
                 );
+              },
+              dense: true,
+            ),
+          if (isExpanded && !request.loggedIn)
+            ListTile(
+              title: const Text('Register'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                );
+              },
+              dense: true,
+            ),
+          if (isExpanded && request.loggedIn)
+            ListTile(
+              title: const Text('Logout'),
+              onTap: () async {
+                logout(context, request);
               },
               dense: true,
             ),
@@ -207,12 +241,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 context,
                 MaterialPageRoute(builder: (context) => const BlogIndexPage()),
               );
-            },
-          ),
-          ListTile(
-            title: const Text('Logout'),
-            onTap: () async {
-              Logout(context);
             },
           ),
         ],

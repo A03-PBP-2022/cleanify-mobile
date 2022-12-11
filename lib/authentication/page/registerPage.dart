@@ -45,7 +45,7 @@ class _State extends State<RegisterPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Signup'),
+        title: const Text('Register'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -253,12 +253,9 @@ class _State extends State<RegisterPage> {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
                             content: Text(
-                                "Account has been successfully registered!"),
+                                "Account has been successfully registered! You may now log in."),
                           ));
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => LoginPage()),
-                          );
+                          Navigator.pop(context);
                         } else {
                           ScaffoldMessenger.of(context)
                               .showSnackBar(const SnackBar(
