@@ -1,7 +1,16 @@
 # Cleanify (di mobile)
 
-<!-- [![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
-[![Aplikasi Heroku](https://img.shields.io/badge/heroku-cleanifyid-blue?logo=heroku&logoColor=white)](https://cleanifyid.herokuapp.com/) -->
+[![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Status build di master](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logo=github-actions&logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Status build di dev](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logo=github-actions&logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Aplikasi di GitHub Pages](https://img.shields.io/badge/web-a03--pbp--2022.github.io%2Fcleanify--mobile-blue?logo=github&logoColor=white)](https://a03-pbp-2022.github.io/cleanify-mobile/)
+
+## 🔽 Download
+
+| Status | Android (*.apk) |  
+| -: | - |
+| [![Master build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logoColor=white&label=master)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/master/android.zip)
+| [![Dev build status](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logoColor=white&label=dev)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml) | [![](https://img.shields.io/badge/download-nightly.link-540054)](https://nightly.link/A03-PBP-2022/cleanify-mobile/workflows/build/dev/android.zip)
 
 <!--
 Nanti akan diganti dengan link ke APK langsung. Jangan dulu.
@@ -36,7 +45,7 @@ Modul ini berfungsi sebagai autentikasi user menggunakan aplikasi. Tedapat prose
 
 ### 2. Pelaporan Wilayah Sampah
 
-![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
+![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
 
 Modul ini berfungsi sebagai tempat melaporkan wilayah sampah yang perlu dibersihkan oleh crew, yang dikhususkan untuk user untuk diisi. Laporan ini nanti akan ditunjukkan pada dasbor laporan wilayah sampah.
 
@@ -44,7 +53,7 @@ Modul ini juga berisi dasbor yang berisi laporan-laporan wilayah sampah yang per
 
 ### 3. Bank Sampah
 
-![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
+![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
 
 Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampah ke dalam tempat bank sampah tersebut. Setelah melakukan pengisian form tersebut, maka akan dilakukannya pengambilan sampah tersebut.
 
@@ -52,7 +61,7 @@ Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampa
 
 ![](https://img.shields.io/badge/bagian-Muhammad_Alif_Ilham-blue)
 
-Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca. Pertanyaan dan jawaban dengan jumlah *thumbs up* terbanyak akan ditampilkan di paling atas daftar pertanyaan. Modul ini dapat dilihat dan diakses oleh User.
+Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca. Pertanyaan dan jawaban dengan jumlah *thumbs up* terbanyak akan ditampilkan di paling atas daftar pertanyaan. Mengambil data dari Json cleanify web. Modul ini dapat dilihat dan diakses oleh User.
 
 ### 5. Blog
 
