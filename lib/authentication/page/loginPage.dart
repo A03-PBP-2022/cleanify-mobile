@@ -1,3 +1,4 @@
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/authentication/page/registerPage.dart';
@@ -153,7 +154,7 @@ class _State extends State<LoginPage> {
                                         .validate()) {
                                       //const url = "http://127.0.0.1:8000/auth/login_flutter/";
                                       const url =
-                                          "https://cleanifyid.up.railway.app/auth/api/login";
+                                          "$endpointDomain/auth/api/login";
                                       final response = await request.login(
                                           url, {
                                             'email': _controllerEmail.text,
@@ -179,7 +180,7 @@ class _State extends State<LoginPage> {
                                         Navigator.pop(context);
                                         Navigator.pushReplacement(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const HomePage()),
+                                          MaterialPageRoute(builder: (context) => homePage),
                                         );
                                       } else {
                                         setState(() {

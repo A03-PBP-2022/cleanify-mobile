@@ -38,21 +38,18 @@ class Fields {
         required this.location,
         required this.urgency,
         required this.description,
-        required this.contact,
     });
 
     String date;
     String location;
     String urgency;
     String description;
-    String contact;
 
     factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         date: json["date"],
         location: json["location"],
         urgency: json["urgency"],
         description: json["description"],
-        contact: json["contact"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -60,6 +57,5 @@ class Fields {
         "location": location,
         "urgency": urgency,
         "description": description,
-        "contact": contact,
     };
 }

@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
-import 'package:cleanify/laporsampah/model/laporan.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
 import 'package:intl/intl.dart';
-
-List<Details> listData = [];
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class FormReportPage extends StatefulWidget {
   // final String id;
@@ -17,28 +16,22 @@ class FormReportPage extends StatefulWidget {
 }
 
 class _FormReportPageState extends State<FormReportPage> {
-  final _formKey = GlobalKey<FormState>();
-  // TextEditingController LocationField = TextEditingController(text: "");
-  // TextEditingController UrgencyField = TextEditingController(text: "");
-  // TextEditingController DescriptionField = TextEditingController(text: "");
-  // TextEditingController ContactField = TextEditingController(text: "");
-  // TextEditingController DateField = TextEditingController(text: "");
-
-  String? LocationField = "";
-  String? UrgencyField = "";
-  String? DescriptionField = "";
-  String? ContactField = "";
-  String? DateField = "";
+  final _loginFormKey = GlobalKey<FormState>();
+  final TextEditingController LocationField = TextEditingController(text: "");
+  final TextEditingController UrgencyField = TextEditingController(text: "");
+  final TextEditingController DescriptionField = TextEditingController(text: "");
+  final TextEditingController DateField = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       drawer: GlobalDrawer(),
       appBar: AppBar(
         title: Text("Pelaporan Wilayah Sampah"),
       ),
       body: Form(
-        key: _formKey,
+        key: _loginFormKey,
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(20.0),
@@ -47,6 +40,7 @@ class _FormReportPageState extends State<FormReportPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: LocationField,
                     decoration: new InputDecoration(
                       hintText: "Wilayah sampah",
                       labelText: "Location",
@@ -54,16 +48,6 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        LocationField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        LocationField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's detail";
@@ -75,7 +59,7 @@ class _FormReportPageState extends State<FormReportPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    // controller: UrgencyField,
+                    controller: UrgencyField,
                     decoration: new InputDecoration(
                       hintText: "out of 5",
                       labelText: "Urgency",
@@ -83,16 +67,6 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        UrgencyField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        UrgencyField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's urgency level";
@@ -104,7 +78,7 @@ class _FormReportPageState extends State<FormReportPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    // controller: DescriptionField,
+                    controller: DescriptionField,
                     decoration: new InputDecoration(
                       hintText: "Description",
                       labelText: "Minimum of 50 words",
@@ -112,16 +86,6 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        DescriptionField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        DescriptionField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's description";
@@ -130,47 +94,33 @@ class _FormReportPageState extends State<FormReportPage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    // controller: ContactField,
-                    decoration: new InputDecoration(
-                      hintText: "0821-xxxx-xxxx",
-                      labelText: "Contact Information",
-                      icon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                ElevatedButton(
+                    child: const Text(
+                      'Submit',
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        ContactField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        ContactField = value!;
-                      });
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return "Please fill in your contact details";
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                TextButton(
-                    child: const Text('Submit'),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Details data = Details(
-                            DateField.toString(),
-                            LocationField.toString(),
-                            UrgencyField.toString(),
-                            DescriptionField.toString(),
-                            ContactField.toString());
-                        listData.add(data);
-                      }
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.blue.shade700),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                    onPressed: () async {
+                      if (_loginFormKey.currentState!.validate()) {
+                        const url = "https://cleanifyid.up.railway.app/report/reportlocation/";
+                        final response = await request.post(url, {
+                          'location': LocationField.text,
+                          'urgency': UrgencyField.text,
+                          'description': DescriptionField.text,
+                        });
+                        print(response);
+                        // Map<String, dynamic> data = jsonDecode(response);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FormReportPage()),
+                        );
+
+                      };
                     }),
               ],
             ),
