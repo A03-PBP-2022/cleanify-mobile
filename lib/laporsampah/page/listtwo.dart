@@ -2,17 +2,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
-import 'package:cleanify/laporsampah/model/laporan.dart';
-import 'package:cleanify/laporsampah/page/form_report.dart';
-import 'package:cleanify/laporsampah/page/formtwo.dart';
-import 'package:intl/intl.dart';
-import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:cleanify/consts.dart';
 
 Future<List<Widget>> fetchData(request) async {
   List<Widget> result = [];
-  const url = 'https://cleanifyid.up.railway.app/report/locations/';
+  const url = '$endpointDomain/report/locations/';
   final response = await request.get(url);
   final extractedData = jsonDecode(
       (response as Map<String, dynamic>)['locations']); //masalah nya disini
