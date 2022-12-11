@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
@@ -109,7 +107,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             },
           ),
@@ -121,8 +119,8 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                 )),
             dense: true,
           ),
-          ListTile(
-            title: const Text('Pelaporan Wilayah Sampah'),
+          ListTile( // Both user and crew access
+            title: const Text('Report Location'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -130,8 +128,8 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               );
             },
           ),
-          ListTile(
-            title: const Text('List Wilayah Sampah'),
+          ListTile( // Crew access
+            title: const Text('View Locations'),
             onTap: () {
               Navigator.pushReplacement(
                 context,

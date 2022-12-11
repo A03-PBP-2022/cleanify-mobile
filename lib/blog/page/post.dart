@@ -1,10 +1,15 @@
+import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/blog/component/markdown_style.dart';
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/blog/model/comment.dart';
 import 'package:cleanify/blog/model/post.dart';
 import 'package:cleanify/blog/component/comment_item.dart';
+import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key, required this.postId});
@@ -26,6 +31,7 @@ class _PostPageState extends State<PostPage> {
   final int _numberOfPostsPerRequest = 10;
   late List<Comment> _comments;
   late ScrollController _scrollController;
+  var _newComment = '';
 
   @override
   void initState() {
@@ -35,15 +41,15 @@ class _PostPageState extends State<PostPage> {
     _comments = [];
     _isLastPage = false;
     _loading = true;
-    fetchComments2();
+    fetchCommentsState();
     _error = false;
     _scrollController = ScrollController();
+    _newComment = '';
   }
 
-  Future<void> fetchComments2() async {
+  Future<void> fetchCommentsState() async {
     try {
       List<Comment> commentList = await fetchComments(widget.postId, _pageNumber);
-
       if (mounted) {
         setState(() {
           _isLastPage = commentList.length < _numberOfPostsPerRequest;
@@ -66,12 +72,15 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
 
+    final request = context.watch<CookieRequest>();
+    final user = context.watch<User>();
+
     _scrollController.addListener(() {
       var nextPageTrigger = 0.8 * _scrollController.position.maxScrollExtent;
 
       if ((_scrollController.position.pixels > nextPageTrigger) && !_loading && !_error && !_isLastPage) {
         _loading = true;
-        fetchComments2();
+        fetchCommentsState();
       }
     });
 
@@ -140,6 +149,49 @@ class _PostPageState extends State<PostPage> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+                      ),
+                      if (user.permissions.contains('add_comment')) Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: TextField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              onChanged: (value) => {
+                                setState(() {
+                                  _newComment = value;
+                                })
+                              },
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.all(8),
+                                    backgroundColor: Theme.of(context).primaryColor,
+                                    foregroundColor: Colors.white
+                                  ),
+                                  onPressed: () async {
+                                    final response = await request.post('$endpointDomain/blog/api/post/${widget.postId}/comment/new', {
+                                      'content': _newComment,
+                                    });
+                                    final newComment = await fetchComment(widget.postId, response['pk']);
+                                    setState(() {
+                                      _comments.insert(0, newComment);
+                                    });
+                                  },
+                                  child: const Text('Create'),
+                                ),
+                              ],
+                            ), 
+                          ),
+                        ],
                       ),
                       commentsList()
                     ],

@@ -1,0 +1,50 @@
+name: Release app
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  android:
+    name: Android
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Generate Java keystore
+        env: 
+          KEY_P12: ${{ secrets.KEY_P12 }}
+        run: echo "$KEY_P12" | base64 --decode > release-keystore.p12
+      - name: Get variables
+        id: vars
+        run: | 
+          echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          echo "date=$(TZ='Asia/Jakarta' date +'%A %d-%m-%Y %T WIB')" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build app
+        env:
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: flutter build apk --split-per-abi
+
+      - name: Release APK
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: build/app/outputs/flutter-apk/*
+          body: Published at ${{ steps.vars.outputs.date }}
+          name: ${{ steps.vars.outputs.version }}
+          token: ${{ secrets.GH_TOKEN }}

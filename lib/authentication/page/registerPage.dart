@@ -1,3 +1,4 @@
+import 'package:cleanify/consts.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -236,7 +237,7 @@ class _State extends State<RegisterPage> {
                       onPressed: () async {
                         if (_registerFormKey.currentState!.validate()) {
                           const url =
-                              "https://cleanifyid.up.railway.app/auth/api/register";
+                              "$endpointDomain/auth/api/register";
                           final response = await request.post(url, {
                             'email': controllerEmail.text,
                             'username': controllerUsername.text,

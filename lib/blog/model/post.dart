@@ -1,4 +1,4 @@
-import 'package:cleanify/blog/consts.dart';
+import 'package:cleanify/consts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -13,8 +13,8 @@ String postsToJson(Posts data) => json.encode(data.toJson());
 class Posts {
     Posts({
         required this.count,
-        required this.next,
-        required this.previous,
+        this.next,
+        this.previous,
         required this.results,
     });
 
@@ -77,22 +77,24 @@ class Post {
 class Author {
     Author({
         required this.username,
-        required this.nama,
+        required this.name,
     });
 
     String username;
-    String nama;
+    String name;
 
     factory Author.fromJson(Map<String, dynamic> json) => Author(
         username: json["username"],
-        nama: json["nama"],
+        name: json["name"],
     );
 
     Map<String, dynamic> toJson() => {
         "username": username,
-        "nama": nama,
+        "name": name,
     };
 }
+
+
 Future<List<Post>> fetchBlogPostIndex(int pageKey) async {
 
   var url = Uri.parse('$endpointDomain/blog/api2/posts');
