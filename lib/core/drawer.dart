@@ -145,70 +145,83 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               );
             },
           ),
-          const ListTile(
-            title: Text('Report Waste',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                )),
-            dense: true,
-          ),
-          ListTile( // Both user and crew access
-            title: const Text('Report Location'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const FormReportPage()),
-              );
-            },
-          ),
-          ListTile( // Crew access
-            title: const Text('View Locations'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const ListReportPage()),
-              );
-            },
-          ),
-          const ListTile(
-            title: Text('Waste Bank',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                )),
-            dense: true,
-          ),
-          ListTile(
-            title: const Text('List Bank Sampah'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const BankSampahMyPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Form Bank Sampah'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const BankSampahFormPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('My Bank Sampah'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const BankSampahJsonPage()),
-              );
-            },
-          ),
+          if (user.permissions.contains('add_location') ||
+              user.permissions.contains('view_location'))
+            const ListTile(
+              title: Text('Report Waste',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  )),
+              dense: true,
+            ),
+          if (user.permissions.contains('add_location'))
+            ListTile(
+              // Both user and crew access
+              title: const Text('Report Location'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const FormReportPage()),
+                );
+              },
+            ),
+          if (user.permissions.contains('view_location'))
+            ListTile(
+              // Crew access
+              title: const Text('View Locations'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ListReportPage()),
+                );
+              },
+            ),
+          if (user.permissions.contains('add_bank') ||
+              user.permissions.contains('view_bank'))
+            const ListTile(
+              title: Text('Waste Bank',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black54,
+                  )),
+              dense: true,
+            ),
+          if (user.permissions.contains('view_bank'))
+            ListTile(
+              title: const Text('View Bank'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BankSampahMyPage()),
+                );
+              },
+            ),
+          if (user.permissions.contains('add_bank'))
+            ListTile(
+              title: const Text('Add Waste'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BankSampahFormPage()),
+                );
+              },
+            ),
+          if (user.permissions.contains('view_bank'))
+            ListTile(
+              title: const Text('View My Bank'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BankSampahJsonPage()),
+                );
+              },
+            ),
           const ListTile(
             title: Text('FAQ',
                 style: TextStyle(
