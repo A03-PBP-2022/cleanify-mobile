@@ -95,8 +95,8 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
             ),
             dense: true,
           ),
-          ListTile(
-            title: const Text('Pelaporan Wilayah Sampah'),
+          ListTile( // Both user and crew access
+            title: const Text('Report Location'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -104,8 +104,8 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               );
             },
           ),
-          ListTile(
-            title: const Text('List Wilayah Sampah'),
+          ListTile( // Crew access
+            title: const Text('View Locations'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
