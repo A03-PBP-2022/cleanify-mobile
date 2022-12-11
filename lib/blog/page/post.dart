@@ -24,27 +24,20 @@ class PostPage extends StatefulWidget {
 class _PostPageState extends State<PostPage> {
   late Future<Post> futurePost;
 
-  late bool _isLastPage;
-  late int _pageNumber;
-  late bool _error;
-  late bool _loading;
+  late bool _isLastPage = false;
+  late int _pageNumber = 1;
+  late bool _error = false;
+  late bool _loading = true;
   final int _numberOfPostsPerRequest = 10;
-  late List<Comment> _comments;
-  late ScrollController _scrollController;
-  var _newComment = '';
+  final List<Comment> _comments = [];
+  final ScrollController _scrollController = ScrollController();
+  final TextEditingController _newCommentController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     futurePost = fetchPost(widget.postId);
-    _pageNumber = 1;
-    _comments = [];
-    _isLastPage = false;
-    _loading = true;
     fetchCommentsState();
-    _error = false;
-    _scrollController = ScrollController();
-    _newComment = '';
   }
 
   Future<void> fetchCommentsState() async {
@@ -159,11 +152,7 @@ class _PostPageState extends State<PostPage> {
                             child: TextField(
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
-                              onChanged: (value) => {
-                                setState(() {
-                                  _newComment = value;
-                                })
-                              },
+                              controller: _newCommentController,
                             ),
                           ),
                           Container(
@@ -179,9 +168,15 @@ class _PostPageState extends State<PostPage> {
                                   ),
                                   onPressed: () async {
                                     final response = await request.post('$endpointDomain/blog/api/post/${widget.postId}/comment/new', {
-                                      'content': _newComment,
+                                      'content': _newCommentController.text,
                                     });
                                     final newComment = await fetchComment(widget.postId, response['pk']);
+                                    ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                        content:
+                                          Text("Comment sent!"),
+                                        ));
+                                    _newCommentController.clear();
                                     setState(() {
                                       _comments.insert(0, newComment);
                                     });
