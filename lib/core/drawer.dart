@@ -1,4 +1,5 @@
 import 'package:cleanify/faq/page/faqPage.dart';
+import 'package:cleanify/faq/page/faqForm.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
+
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({
@@ -134,6 +136,15 @@ class GlobalDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FaqPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Add New FAQ'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FAQFormPage()),
               );
             },
           ),

@@ -65,7 +65,7 @@ class MyWatchlistDetailPage extends StatelessWidget {
                   const Spacer(),
                   TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                         padding: const EdgeInsets.all(15.0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         alignment: Alignment.center),
