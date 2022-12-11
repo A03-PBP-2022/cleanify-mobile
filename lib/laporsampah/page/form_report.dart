@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
-import 'package:cleanify/laporsampah/page/list_report.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:cleanify/consts.dart';
 
 class FormReportPage extends StatefulWidget {
   // final String id;
@@ -106,7 +104,7 @@ class _FormReportPageState extends State<FormReportPage> {
                     ),
                     onPressed: () async {
                       if (_loginFormKey.currentState!.validate()) {
-                        const url = "https://cleanifyid.up.railway.app/report/reportlocation/";
+                        const url = "$endpointDomain/report/reportlocation/";
                         final response = await request.post(url, {
                           'location': LocationField.text,
                           'urgency': UrgencyField.text,
