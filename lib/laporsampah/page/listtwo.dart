@@ -2,6 +2,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
+import 'package:cleanify/laporsampah/model/laporan.dart';
+import 'package:cleanify/laporsampah/page/form_report.dart';
+import 'package:cleanify/laporsampah/page/formtwo.dart';
+import 'package:intl/intl.dart';
+import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
@@ -101,8 +106,6 @@ Widget buildProjectCard({
                     location,
                     style: TextStyle(fontSize: 25),
                     textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               )
@@ -156,8 +159,8 @@ Widget buildProjectCard({
                 width: 1000,
                 child: Text(
                   description,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
+                  // maxLines: 3,
+                  // overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),

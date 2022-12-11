@@ -22,6 +22,31 @@ class _FormReportPageState extends State<FormReportPage> {
   final TextEditingController DescriptionField = TextEditingController(text: "");
   final TextEditingController DateField = TextEditingController(text: "");
 
+  // Future<void> submit(BuildContext context) async {
+  //   String date = DateFormat("yyyy-MM-dd").format(DateTime.now());
+  //   const url = "https://cleanifyid.up.railway.app/report/";
+  //   final response = await http.post(Uri.parse(url),
+  //       headers: <String, String>{
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: jsonEncode(<String, dynamic>{
+  //         'location': LocationField,
+  //         'urgency': UrgencyField,
+  //         'description': DescriptionField,
+  //         'contact': ContactField,
+  //         'date': date,
+  //       }));
+  //   print(response);
+  //   print(response.body);
+  // }
+
+  // void printHasil(BuildContext context) {
+  //   print(LocationField);
+  //   print(UrgencyField);
+  //   print(DateField);
+  //   print(DescriptionField);
+  // }
+
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
@@ -48,6 +73,16 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
+                    // onChanged: (String? value) {
+                    //   setState(() {
+                    //     LocationField = value!;
+                    //   });
+                    // },
+                    // onSaved: (String? value) {
+                    //   setState(() {
+                    //     LocationField = value!;
+                    //   });
+                    // },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's detail";
@@ -67,6 +102,16 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
+                    // onChanged: (String? value) {
+                    //   setState(() {
+                    //     UrgencyField = value!;
+                    //   });
+                    // },
+                    // onSaved: (String? value) {
+                    //   setState(() {
+                    //     UrgencyField = value!;
+                    //   });
+                    // },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's urgency level";
@@ -86,6 +131,16 @@ class _FormReportPageState extends State<FormReportPage> {
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
+                    // onChanged: (String? value) {
+                    //   setState(() {
+                    //     DescriptionField = value!;
+                    //   });
+                    // },
+                    // onSaved: (String? value) {
+                    //   setState(() {
+                    //     DescriptionField = value!;
+                    //   });
+                    // },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
                         return "Please fill the location's description";
