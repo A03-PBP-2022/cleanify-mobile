@@ -10,8 +10,7 @@ Future<List<Widget>> fetchData(request) async {
   const url = 'https://cleanifyid.up.railway.app/report/locations/';
   final response = await request.get(url);
   final extractedData = jsonDecode(
-      (response as Map<String, dynamic>)['locations']); //masalah nya disini
-
+      (response as Map<String, dynamic>)['locations']); 
   for (var location in extractedData) {
     result.add(buildProjectCard(
         date: location['fields']['date'],
@@ -19,7 +18,6 @@ Future<List<Widget>> fetchData(request) async {
         urgency: location['fields']['urgency'].toString(),
         description: location['fields']['description'].toString()));
   }
-
   return result;
 }
 
@@ -60,6 +58,41 @@ class _ListReportPageState extends State<ListReportPage> {
         ));
   }
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   final request = context.watch<CookieRequest>();
+  //   getData(request);
+  //   return Scaffold(
+  //       appBar: AppBar(
+  //         title: const Text('Report List'),
+  //       ),
+  //       drawer: GlobalDrawer(),
+  //       body: Column (children: [
+  //         Padding(
+  //           padding: const EdgeInsets.all(8.0),
+  //           child: Container(
+  //               padding: EdgeInsets.all(5),
+  //               child: Text(
+  //                 "Cleaning Crews, We Need Your Help!",
+  //                 style: TextStyle(fontSize: 35),
+  //                 textAlign: TextAlign.center,
+  //               )),
+  //         ),
+  //         Padding(
+  //           padding: const EdgeInsets.all(8.0),
+  //           child: Row(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               Container(
+  //                 width: MediaQuery.of(context).size.width / (4 / 3),
+  //                 child:
+  //                     ListView(controller: ScrollController(), children: reports),
+  //               ),
+  //             ],
+  //           )
+  //       )]));
+  // }
+  
   getData(request) async {
     Future<List<Widget>> data;
     data = fetchData(request);
@@ -78,10 +111,10 @@ Widget buildProjectCard({
     margin: EdgeInsets.all(10),
     decoration: BoxDecoration(
       border: Border(
-        top: BorderSide(width: 1.0, color: Colors.deepPurple),
-        left: BorderSide(width: 1.0, color: Colors.deepPurple),
-        right: BorderSide(width: 1.0, color: Colors.deepPurple),
-        bottom: BorderSide(width: 1.0, color: Colors.deepPurple),
+        top: BorderSide(width: 1.0, color: Color.fromARGB(255, 48, 100, 38)),
+        left: BorderSide(width: 1.0, color: Color.fromARGB(255, 48, 100, 38)),
+        right: BorderSide(width: 1.0, color: Color.fromARGB(255, 48, 100, 38)),
+        bottom: BorderSide(width: 1.0, color: Color.fromARGB(255, 48, 100, 38)),
       ),
       borderRadius: BorderRadius.circular(10),
     ),
@@ -115,10 +148,14 @@ Widget buildProjectCard({
             Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(width: 2.0, color: Colors.purple),
-                    left: BorderSide(width: 2.0, color: Colors.purple),
-                    right: BorderSide(width: 2.0, color: Colors.purple),
-                    bottom: BorderSide(width: 2.0, color: Colors.purple),
+                    top: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    left: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    right: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    bottom: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -132,17 +169,21 @@ Widget buildProjectCard({
             Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    top: BorderSide(width: 2.0, color: Colors.purple),
-                    left: BorderSide(width: 2.0, color: Colors.purple),
-                    right: BorderSide(width: 2.0, color: Colors.purple),
-                    bottom: BorderSide(width: 2.0, color: Colors.purple),
+                    top: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    left: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    right: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+                    bottom: BorderSide(
+                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding: EdgeInsets.all(5),
                 child: Row(
                   children: [
-                    Text("Urgency level: " + urgency),
+                    Text(" Urgency level: " + urgency + "/5 "),
                   ],
                 )),
           ]),
@@ -153,7 +194,7 @@ Widget buildProjectCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 1000,
+                width: 600,
                 child: Text(
                   description,
                   maxLines: 3,

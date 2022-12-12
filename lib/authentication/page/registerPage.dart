@@ -35,8 +35,8 @@ class _State extends State<RegisterPage> {
     });
   }
 
-  String role = 'User';
-  List<String> listRole = ['User', 'Crew'];
+  String role = 'user';
+  List<String> listRole = ['user', 'crew'];
 
   @override
   Widget build(BuildContext context) {
