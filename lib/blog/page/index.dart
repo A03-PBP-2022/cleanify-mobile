@@ -2,6 +2,7 @@ import 'package:cleanify/blog/component/post_list_item.dart';
 import 'package:cleanify/blog/model/post.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class BlogIndexPage extends StatefulWidget {
   const BlogIndexPage({super.key});
@@ -12,12 +13,33 @@ class BlogIndexPage extends StatefulWidget {
 }
 
 class _BlogIndexPageState extends State<BlogIndexPage> {
-  late Future<List<Post>> futurePostIndex;
+  static const _pageSize = 10;
+
+  final PagingController<int, Post> _pagingController =
+      PagingController(firstPageKey: 1);
 
   @override
   void initState() {
+    _pagingController.addPageRequestListener((pageKey) {
+      _fetchPage(pageKey);
+    });
     super.initState();
-    futurePostIndex = fetchBlogPostIndex();
+  }
+
+  // fetchBlogPostIndex
+  Future<void> _fetchPage(int pageKey) async {
+    try {
+      final newItems = await fetchBlogPostIndex(pageKey);
+      final isLastPage = newItems.length < _pageSize;
+      if (isLastPage) {
+        _pagingController.appendLastPage(newItems);
+      } else {
+        final nextPageKey = pageKey + newItems.length;
+        _pagingController.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      _pagingController.error = error;
+    }
   }
 
   @override
@@ -27,24 +49,15 @@ class _BlogIndexPageState extends State<BlogIndexPage> {
         title: Text(widget.title),
       ),
       drawer: const GlobalDrawer(),
-      body: FutureBuilder<List<Post>>(
-        future: futurePostIndex,
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              shrinkWrap: true,
-              itemCount: snapshot.data!.length,
-              itemBuilder: (_, index) => PostListItem(
-                post: snapshot.data![index]
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
-
-          return const Center(child: CircularProgressIndicator());
-        }
-      )
+      body: PagedListView<int, Post>(
+        pagingController: _pagingController,
+        builderDelegate: PagedChildBuilderDelegate<Post>(
+          itemBuilder: (context, item, index) => 
+          PostListItem(
+            post: item
+          ),
+        ),
+      ),
     );
   }
 }

@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "A03-PBP-2022" "\0"
-            VALUE "FileDescription", "cleanify" "\0"
+            VALUE "FileDescription", "Cleanify" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "cleanify" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 A03-PBP-2022. All rights reserved." "\0"
-            VALUE "OriginalFilename", "cleanify.exe" "\0"
-            VALUE "ProductName", "cleanify" "\0"
+            VALUE "OriginalFilename", "Cleanify.exe" "\0"
+            VALUE "ProductName", "Cleanify" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

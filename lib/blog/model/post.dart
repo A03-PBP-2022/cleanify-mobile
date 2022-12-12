@@ -1,75 +1,103 @@
-import 'dart:convert';
+import 'package:cleanify/consts.dart';
 import 'package:http/http.dart' as http;
-
-List<Post> postsFromJson(String str) =>
-    List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
-
-String postsToJson(List<Post> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+import 'dart:convert';
 
 Post postFromJson(String str) => Post.fromJson(json.decode(str));
 
 String postToJson(Post data) => json.encode(data.toJson());
 
-class Post {
-  Post({
-    required this.model,
-    required this.pk,
-    required this.fields,
-  });
+Posts postsFromJson(String str) => Posts.fromJson(json.decode(str));
 
-  String model;
-  int pk;
-  PostFields fields;
+String postsToJson(Posts data) => json.encode(data.toJson());
 
-  factory Post.fromJson(Map<String, dynamic> json) => Post(
-        model: json["model"],
-        pk: json["pk"],
-        fields: PostFields.fromJson(json["fields"]),
-      );
+class Posts {
+    Posts({
+        required this.count,
+        this.next,
+        this.previous,
+        required this.results,
+    });
 
-  Map<String, dynamic> toJson() => {
-        "model": model,
-        "pk": pk,
-        "fields": fields.toJson(),
-      };
+    int count;
+    dynamic next;
+    dynamic previous;
+    List<Post> results;
+
+    factory Posts.fromJson(Map<String, dynamic> json) => Posts(
+        count: json["count"],
+        next: json["next"],
+        previous: json["previous"],
+        results: List<Post>.from(json["results"].map((x) => Post.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "count": count,
+        "next": next,
+        "previous": previous,
+        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+    };
 }
 
-class PostFields {
-  PostFields({
-    required this.author,
-    required this.title,
-    required this.content,
-    required this.createdTimestamp,
-    required this.modifiedTimestamp,
-  });
+class Post {
+    Post({
+        required this.pk,
+        required this.author,
+        required this.title,
+        required this.content,
+        required this.createdTimestamp,
+        required this.modifiedTimestamp,
+    });
 
-  int author;
-  String title;
-  String content;
-  DateTime createdTimestamp;
-  DateTime modifiedTimestamp;
+    int pk;
+    Author author;
+    String title;
+    String content;
+    DateTime createdTimestamp;
+    DateTime modifiedTimestamp;
 
-  factory PostFields.fromJson(Map<String, dynamic> json) => PostFields(
-        author: json["author"],
+    factory Post.fromJson(Map<String, dynamic> json) => Post(
+        pk: json["pk"],
+        author: Author.fromJson(json["author"]),
         title: json["title"],
         content: json["content"],
         createdTimestamp: DateTime.parse(json["created_timestamp"]),
         modifiedTimestamp: DateTime.parse(json["modified_timestamp"]),
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
-        "author": author,
+    Map<String, dynamic> toJson() => {
+        "pk": pk,
+        "author": author.toJson(),
         "title": title,
         "content": content,
         "created_timestamp": createdTimestamp.toIso8601String(),
         "modified_timestamp": modifiedTimestamp.toIso8601String(),
-      };
+    };
 }
 
-Future<List<Post>> fetchBlogPostIndex() async {
-  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post');
-  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post');
+class Author {
+    Author({
+        required this.username,
+        required this.name,
+    });
+
+    String username;
+    String name;
+
+    factory Author.fromJson(Map<String, dynamic> json) => Author(
+        username: json["username"],
+        name: json["name"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "username": username,
+        "name": name,
+    };
+}
+
+
+Future<List<Post>> fetchBlogPostIndex(int pageKey) async {
+
+  var url = Uri.parse('$endpointDomain/blog/api2/posts');
 
   final response = await http.get(
     url,
@@ -83,14 +111,13 @@ Future<List<Post>> fetchBlogPostIndex() async {
     throw Exception("Failed on getting data.");
   }
 
-  final data = postsFromJson(utf8.decode(response.bodyBytes));
+  final data = postsFromJson(utf8.decode(response.bodyBytes)).results;
 
   return data;
 }
 
 Future<Post> fetchPost(int postId) async {
-  // var url = Uri.parse('http://127.0.0.1:8000/blog/api/post/$postId');
-  var url = Uri.parse('https://cleanifyid.up.railway.app/blog/api/post/$postId');
+  var url = Uri.parse('$endpointDomain/blog/api2/posts/$postId');
 
   final response = await http.get(
     url,
