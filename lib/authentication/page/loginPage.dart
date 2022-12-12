@@ -169,6 +169,7 @@ class _State extends State<LoginPage> {
                                       if (request.loggedIn) {
                                         print("Logged in!");
                                         final info = request.jsonData['info'];
+                                        user.pk = info['pk'];
                                         user.email = info['email'];
                                         user.username = info['username'];
                                         user.name = info['name'];

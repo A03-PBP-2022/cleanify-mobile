@@ -46,6 +46,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("Successfully logged out!"),
         ));
+        user.pk = null;
         user.email = null;
         user.username = null;
         user.name = null;

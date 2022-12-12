@@ -10,6 +10,7 @@ String userToJson(User data) => json.encode(data.toJson());
 
 class User {
     User({
+        this.pk,
         this.email,
         this.username,
         this.name,
@@ -19,6 +20,7 @@ class User {
         this.permissions = const [],
     });
 
+    int? pk;
     String? email;
     String? username;
     String? name;
@@ -28,6 +30,7 @@ class User {
     List<String> permissions;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
+        pk: json["pk"],
         email: json["email"],
         username: json["username"],
         name: json["name"],
@@ -38,6 +41,7 @@ class User {
     );
 
     Map<String, dynamic> toJson() => {
+        "pk": pk,
         "email": email,
         "username": username,
         "name": name,
