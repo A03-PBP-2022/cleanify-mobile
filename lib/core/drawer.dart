@@ -8,7 +8,6 @@ import 'package:cleanify/blog/page/index.dart';
 import 'package:cleanify/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
@@ -190,17 +189,6 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                     color: Colors.black54,
                   )),
               dense: true,
-            ),
-          if (user.permissions.contains('view_bank'))
-            ListTile(
-              title: const Text('View Bank'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const BankSampahMyPage()),
-                );
-              },
             ),
           if (user.permissions.contains('add_bank'))
             ListTile(

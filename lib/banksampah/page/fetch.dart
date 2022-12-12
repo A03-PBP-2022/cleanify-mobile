@@ -3,8 +3,8 @@ import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:cleanify/consts.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<BankSampah>> fetchMyWatchList() async {
-    var url = Uri.parse('$endpointDomain/bank/json/');
+Future<List<BankSampah>> fetchMyBankSampah() async {
+    var url = Uri.parse('$endpointDomain/bank/json_flutter/');
     var response = await http.get(
     url,
     headers: {
@@ -17,11 +17,11 @@ Future<List<BankSampah>> fetchMyWatchList() async {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object ToDo
-    List<BankSampah> listMyWatchList = [];
+    List<BankSampah> listMyBankSampah = [];
     for (var d in data) {
       if (d != null) {
-          listMyWatchList.add(BankSampah.fromJson(d));
+          listMyBankSampah.add(BankSampah.fromJson(d));
         }
     }
-    return listMyWatchList;
+    return listMyBankSampah;
 }

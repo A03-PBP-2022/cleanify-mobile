@@ -1,10 +1,6 @@
-import 'package:cleanify/banksampah/model/banksampah.dart';
 import 'package:cleanify/banksampah/page/item.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/banksampah/page/fetch.dart';
 
 class BankSampahJsonPage extends StatefulWidget {
@@ -16,19 +12,22 @@ class BankSampahJsonPage extends StatefulWidget {
 
 class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
 
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         appBar: AppBar(
             title: const Text('My Bank Sampah'),
         ),
         drawer: const GlobalDrawer(),
         body: FutureBuilder(
-          future: fetchMyWatchList(),
+          future: fetchMyBankSampah(),
           builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
               return const Center(child: CircularProgressIndicator());
               } else {
+              // make request from user
               if (!snapshot.hasData) {
                   return Column(
                   children: const [
@@ -55,7 +54,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                           borderRadius: BorderRadius.circular(8.0),
                       ),
                       title: Text(
-                              "${snapshot.data![index].fields.title}",
+                              "Address: ${snapshot.data![index].fields.alamat}",
                               style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
