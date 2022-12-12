@@ -47,9 +47,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
         user.address = null;
         user.role = 'anonymous';
         user.permissions = [];
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const HomePage()),
-            (Route<dynamic> route) => false);
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomePage()), (Route<dynamic> route) => false);
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const LoginPage(),
         ));
@@ -64,11 +62,8 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName:
-                Text(user.role == "anonymous" ? "Anonymous" : user.name ?? ""),
-            accountEmail: Text(user.role == "anonymous"
-                ? "Click to log in."
-                : user.email ?? ""),
+            accountName: Text(user.role == "anonymous" ? "Anonymous" : user.name ?? ""),
+            accountEmail: Text(user.role == "anonymous" ? "Click to log in." : user.email ?? ""),
             onDetailsPressed: () {
               setState(() {
                 isExpanded = !isExpanded;
@@ -120,16 +115,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
                         size: 32,
                         color: Theme.of(context).textTheme.bodyMedium?.color,
                       )),
-                  WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Text('Cleanify',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                              color: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.color))),
+                  WidgetSpan(alignment: PlaceholderAlignment.middle, child: Text('Cleanify', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, color: Theme.of(context).textTheme.bodyMedium?.color))),
                 ],
               ),
             ),
@@ -140,8 +126,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               );
             },
           ),
-          if (user.permissions.contains('add_location') ||
-              user.permissions.contains('view_location'))
+          if (user.permissions.contains('add_location') || user.permissions.contains('view_location'))
             const ListTile(
               title: Text('Report Waste',
                   style: TextStyle(
@@ -157,8 +142,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const FormReportPage()),
+                  MaterialPageRoute(builder: (context) => const FormReportPage()),
                 );
               },
             ),
@@ -169,13 +153,11 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const ListReportPage()),
+                  MaterialPageRoute(builder: (context) => const ListReportPage()),
                 );
               },
             ),
-          if (user.permissions.contains('add_bank') ||
-              user.permissions.contains('view_bank'))
+          if (user.permissions.contains('add_bank') || user.permissions.contains('view_bank'))
             const ListTile(
               title: Text('Waste Bank',
                   style: TextStyle(
@@ -190,8 +172,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const BankSampahFormPage()),
+                  MaterialPageRoute(builder: (context) => const BankSampahFormPage()),
                 );
               },
             ),
@@ -201,8 +182,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const BankSampahJsonPage()),
+                  MaterialPageRoute(builder: (context) => const BankSampahJsonPage()),
                 );
               },
             ),
