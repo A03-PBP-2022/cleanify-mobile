@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:convert';
+import 'package:cleanify/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 Future<List<Widget>> fetchData(request) async {
   List<Widget> result = [];
-  const url = 'https://cleanifyid.up.railway.app/report/locations/';
+  const url = '$endpointDomain/report/locations/';
   final response = await request.get(url);
   final extractedData = jsonDecode(
       (response as Map<String, dynamic>)['locations']); 
