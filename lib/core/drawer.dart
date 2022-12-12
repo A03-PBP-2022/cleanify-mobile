@@ -8,7 +8,6 @@ import 'package:cleanify/blog/page/index.dart';
 import 'package:cleanify/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
-import 'package:cleanify/banksampah/page/list.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';

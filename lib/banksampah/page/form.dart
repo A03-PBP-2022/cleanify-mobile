@@ -19,7 +19,7 @@ class BankSampahFormPage extends StatefulWidget {
 
 class _BankSampahFormPageState extends State<BankSampahFormPage> {
     final _formKey = GlobalKey<FormState>();
-    DateTime? _dateTime;
+    DateTime _dateTime = DateTime.now();
     String? _contact;
     String? _address;
     String? _pilihan;
@@ -53,12 +53,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                _dateTime != null
-                                    ? DateFormat('yMd')
-                                        .format(_dateTime!)
-                                    : 'Choose Date',
-                              ),
+                              Text(DateFormat('yMd').format(_dateTime)),
                               IconButton(
                                 icon: const Icon(
                                   Icons.calendar_month,
@@ -73,7 +68,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                                     lastDate: DateTime(2099),
                                   ).then(
                                     (date) => setState(
-                                      () => _dateTime = date,
+                                      () => _dateTime = date!,
                                     ),
                                   );
                                 },
@@ -176,7 +171,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                       const url = '$endpointDomain/bank/createbank_flutter/';
                       final response = await request.post(url, {
                         'user' :  user.toString(),
-                        'tanggal': _dateTime.toString(),
+                        'tanggal': DateFormat("yyyy-MM-dd").format(_dateTime),
                         'kontak': _contact.toString(),
                         'alamat': _address.toString(),
                         'jenis': _pilihan.toString(),
