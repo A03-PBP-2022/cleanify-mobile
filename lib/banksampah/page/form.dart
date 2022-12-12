@@ -1,5 +1,6 @@
 import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/banksampah/page/my.dart';
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -172,7 +173,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                       backgroundColor: MaterialStateProperty.all(Colors.green),
                   ), onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      const url = 'https://cleanifyid.up.railway.app/bank/createbank_flutter/';
+                      const url = '$endpointDomain/bank/createbank_flutter/';
                       final response = await request.post(url, {
                         'user' :  user.toString(),
                         'tanggal': _dateTime.toString(),
