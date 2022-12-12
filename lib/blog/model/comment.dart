@@ -77,19 +77,23 @@ class Comment {
 
 class Author {
     Author({
+        required this.pk,
         required this.username,
         required this.name,
     });
 
+    int pk;
     String username;
     String name;
 
     factory Author.fromJson(Map<String, dynamic> json) => Author(
+        pk: json["pk"],
         username: json["username"],
         name: json["name"],
     );
 
     Map<String, dynamic> toJson() => {
+        "pk": pk,
         "username": username,
         "name": name,
     };

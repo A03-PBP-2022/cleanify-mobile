@@ -32,6 +32,8 @@ class _PostPageState extends State<PostPage> {
   final List<Comment> _comments = [];
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _newCommentController = TextEditingController();
+  late CookieRequest request;
+  late User user;
 
   @override
   void initState() {
@@ -65,8 +67,8 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
 
-    final request = context.watch<CookieRequest>();
-    final user = context.watch<User>();
+    request = context.watch<CookieRequest>();
+    user = context.watch<User>();
 
     _scrollController.addListener(() {
       var nextPageTrigger = 0.8 * _scrollController.position.maxScrollExtent;
@@ -188,7 +190,10 @@ class _PostPageState extends State<PostPage> {
                           ),
                         ],
                       ),
-                      commentsList()
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: commentsListWidget(),
+                      )
                     ],
                   ),
                 )
@@ -203,7 +208,25 @@ class _PostPageState extends State<PostPage> {
     );
   }
 
-  Widget commentsList() {
+  void _deleteComment(Comment comment) async {
+    dynamic response = await request.post('$endpointDomain/blog/api/post/${widget.postId}/comment/${comment.pk}/delete', {});
+    if (response['status'] != 'OK') {
+      ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(
+          content: Text("Comment failed to be deleted! Try again later."),
+        ));
+      return;
+    }
+    ScaffoldMessenger.of(context)
+      .showSnackBar(const SnackBar(
+        content: Text("Comment deleted!"),
+      ));
+    setState(() {
+      _comments.remove(comment);
+    });
+  }
+
+  Widget commentsListWidget() {
     if (_comments.isEmpty) {
       if (_loading) {
         return const Center(
@@ -216,13 +239,20 @@ class _PostPageState extends State<PostPage> {
         return const Center(
             // child: errorDialog(size: 20)
         );
+      } else {
+        return Text("No comments.");
       }
     }
 
     List<Widget> children = [];
 
     for (var comment in _comments) {
-      children.add(CommentItem(comment));
+      bool isSelf = comment.author.pk == user.pk;
+      children.add(CommentItem(
+        comment, _deleteComment, 
+        canChange: isSelf && user.permissions.contains('change_self_comment') || user.permissions.contains('change_other_comment'),
+        canDelete: isSelf && user.permissions.contains('delete_self_comment') || user.permissions.contains('delete_other_comment'), 
+      ));
     } 
 
     return Column(
