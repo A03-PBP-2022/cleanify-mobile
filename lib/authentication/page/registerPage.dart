@@ -1,22 +1,18 @@
 import 'package:cleanify/consts.dart';
 import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'dart:core';
-import '../models/user.dart';
-import 'package:cleanify/main.dart';
-import 'package:cleanify/authentication/page/loginPage.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
-  _State createState() => _State();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _State extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final _registerFormKey = GlobalKey<FormState>();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerUsername = TextEditingController();
@@ -41,7 +37,6 @@ class _State extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    final user = context.watch<User>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -66,7 +61,7 @@ class _State extends State<RegisterPage> {
                   controller: controllerEmail,
                   autofocus: true,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     labelText: "Email",
                     hintText: "Ex: myname@example.com",
                     border: OutlineInputBorder(
@@ -85,7 +80,7 @@ class _State extends State<RegisterPage> {
                 child: TextFormField(
                   controller: controllerUsername,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     labelText: "Username",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
@@ -105,12 +100,12 @@ class _State extends State<RegisterPage> {
                   controller: controllerPassword,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.security),
+                    prefixIcon: const Icon(Icons.security),
                     labelText: "Password",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
                     suffixIcon: IconButton(
-                      color: Color.fromRGBO(200, 200, 200, 1),
+                      color: const Color.fromRGBO(200, 200, 200, 1),
                       splashRadius: 1,
                       icon: Icon(isPasswordVisible
                           ? Icons.visibility_outlined
@@ -133,12 +128,12 @@ class _State extends State<RegisterPage> {
                   controller: controllerConfirmPassword,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.security),
+                    prefixIcon: const Icon(Icons.security),
                     labelText: "Confirm Password",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
                     suffixIcon: IconButton(
-                      color: Color.fromRGBO(200, 200, 200, 1),
+                      color: const Color.fromRGBO(200, 200, 200, 1),
                       splashRadius: 1,
                       icon: Icon(isPasswordVisible
                           ? Icons.visibility_outlined
@@ -160,7 +155,7 @@ class _State extends State<RegisterPage> {
                 child: TextFormField(
                   controller: controllerFullName,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     labelText: "Full Name",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
@@ -178,7 +173,7 @@ class _State extends State<RegisterPage> {
                 child: TextFormField(
                   controller: controllerPhoneNumber,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.phone),
+                    prefixIcon: const Icon(Icons.phone),
                     labelText: "Phone Number",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
@@ -196,7 +191,7 @@ class _State extends State<RegisterPage> {
                 child: TextFormField(
                   controller: controllerAddress,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.business),
+                    prefixIcon: const Icon(Icons.business),
                     labelText: "Address",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)),
@@ -233,7 +228,6 @@ class _State extends State<RegisterPage> {
               Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
-                      child: const Text('Register'),
                       onPressed: () async {
                         if (_registerFormKey.currentState!.validate()) {
                           const url =
@@ -279,7 +273,8 @@ class _State extends State<RegisterPage> {
                           textStyle: const TextStyle(
                             color: Colors.white,
                           )
-                        )
+                        ),
+                      child: const Text('Register')
                       )
                     )
                   ]),

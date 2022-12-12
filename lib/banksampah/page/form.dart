@@ -23,7 +23,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
     String? _contact;
     String? _address;
     String? _pilihan;
-    List<String> list_pilihan = ['Organik', 'Anorganik', 'B3'];
+    final List<String> _listPilihan = ['Organik', 'Anorganik', 'B3'];
 
 
     @override
@@ -33,7 +33,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
 
         return Scaffold(
             appBar: AppBar(
-                title: Text('Form Bank Sampah'),
+                title: const Text('Form Bank Sampah'),
             ),
             drawer: const GlobalDrawer(),
             body: Form(
@@ -147,7 +147,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                     hint: const Text("Type"),
                     icon: const Icon(Icons.keyboard_arrow_down),
                     borderRadius: BorderRadius.circular(15.0),
-                    items: list_pilihan.map((String items) {
+                    items: _listPilihan.map((String items) {
                         return DropdownMenuItem(
                             value: items,
                             child: Text(items),
@@ -160,10 +160,6 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                     },
                 ),
                 TextButton(
-                  child: const Text(
-                      "Submit",
-                      style: TextStyle(color: Colors.white),
-                  ),
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.green),
                   ), onPressed: () async {
@@ -181,10 +177,14 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                       Navigator.push(
                         context, 
                         MaterialPageRoute(
-                          builder: (context) => BankSampahFormPage()) 
+                          builder: (context) => const BankSampahFormPage()) 
                       );
                     }
-                  }
+                  },
+                  child: const Text(
+                      "Submit",
+                      style: TextStyle(color: Colors.white),
+                  )
                   )
                     ],
                   ),

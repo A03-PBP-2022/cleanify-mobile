@@ -4,7 +4,6 @@ import 'package:cleanify/consts.dart';
 import 'package:cleanify/blog/model/comment.dart';
 import 'package:cleanify/blog/model/post.dart';
 import 'package:cleanify/blog/component/comment_item.dart';
-import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
@@ -191,7 +190,7 @@ class _PostPageState extends State<PostPage> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 8),
+                        margin: const EdgeInsets.only(top: 8),
                         child: commentsListWidget(),
                       )
                     ],
@@ -240,7 +239,7 @@ class _PostPageState extends State<PostPage> {
             // child: errorDialog(size: 20)
         );
       } else {
-        return Text("No comments.");
+        return const Text("No comments.");
       }
     }
 

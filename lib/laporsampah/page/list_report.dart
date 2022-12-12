@@ -51,7 +51,7 @@ class _ListReportPageState extends State<ListReportPage> {
         body: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width / (4 / 3),
               child:
                   ListView(controller: ScrollController(), children: reports),
@@ -95,7 +95,7 @@ Widget buildProjectCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 250,
                   child: Text(
                     location,
@@ -109,58 +109,55 @@ Widget buildProjectCard({
             ],
           ),
         ),
-        Container(
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    left: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    right: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    bottom: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(5),
-                child: Row(
-                  children: [
-                    Icon(Icons.calendar_month),
-                    Text(date),
-                  ],
-                )),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              left: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              right: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              bottom: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          padding: EdgeInsets.all(5),
+          child: Row(
+            children: [
+              Icon(Icons.calendar_month),
+              Text(date),
+            ],
+          )),
             Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    left: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    right: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                    bottom: BorderSide(
-                        width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                padding: EdgeInsets.all(5),
-                child: Row(
-                  children: [
-                    Text(" Urgency level: " + urgency + "/5 "),
-                  ],
-                )),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              left: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              right: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+              bottom: BorderSide(
+                  width: 2.0, color: Color.fromARGB(255, 74, 108, 75)),
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          padding: EdgeInsets.all(5),
+          child: Row(
+            children: [
+              Text(" Urgency level: $urgency/5 "),
+            ],
+          )),
           ]),
-        ),
         Container(
           padding: EdgeInsets.all(10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              SizedBox(
                 width: 250,
                 child: Text(
                   description,

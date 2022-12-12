@@ -2,11 +2,7 @@ import 'package:cleanify/consts.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/authentication/page/registerPage.dart';
-import 'package:http/http.dart' as http;
 import 'package:cleanify/authentication/models/user.dart';
-import 'package:cleanify/main.dart';
-import 'dart:convert';
-import 'dart:async';
 import 'dart:core';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -14,11 +10,13 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/loginPage';
+
+  const LoginPage({super.key});
   @override
-  _State createState() => _State();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _State extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   final _loginFormKey = GlobalKey<FormState>();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
@@ -75,7 +73,7 @@ class _State extends State<LoginPage> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(250, 250, 250, 0.95),
+                                color: const Color.fromRGBO(250, 250, 250, 0.95),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: TextFormField(
@@ -84,8 +82,8 @@ class _State extends State<LoginPage> {
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5.0)),
                                   hintText: 'Email',
-                                  prefixIcon: Icon(Icons.email),
-                                  hintStyle: TextStyle(
+                                  prefixIcon: const Icon(Icons.email),
+                                  hintStyle: const TextStyle(
                                     color: Color.fromRGBO(200, 200, 200, 1),
                                   ),
                                 ),
@@ -99,10 +97,10 @@ class _State extends State<LoginPage> {
                                 },
                               ),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Container(
                               decoration: BoxDecoration(
-                                color: Color.fromRGBO(250, 250, 250, 0.95),
+                                color: const Color.fromRGBO(250, 250, 250, 0.95),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: TextFormField(
@@ -112,16 +110,16 @@ class _State extends State<LoginPage> {
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(5.0)),
                                   hintText: 'Password',
-                                  prefixIcon: Icon(Icons.lock),
+                                  prefixIcon: const Icon(Icons.lock),
                                   suffixIcon: IconButton(
-                                    color: Color.fromRGBO(200, 200, 200, 1),
+                                    color: const Color.fromRGBO(200, 200, 200, 1),
                                     splashRadius: 1,
                                     icon: Icon(isPasswordVisible
                                         ? Icons.visibility_outlined
                                         : Icons.visibility_off_outlined),
                                     onPressed: togglePasswordView,
                                   ),
-                                  hintStyle: TextStyle(
+                                  hintStyle: const TextStyle(
                                     color: Color.fromRGBO(200, 200, 200, 1),
                                   ),
                                 ),
@@ -135,8 +133,8 @@ class _State extends State<LoginPage> {
                                 },
                               ),
                             ),
-                            SizedBox(height: 20),
-                            Container(
+                            const SizedBox(height: 20),
+                            SizedBox(
                                 width: double.infinity,
                                 child: TextButton(
                                   style: ButtonStyle(
@@ -156,7 +154,7 @@ class _State extends State<LoginPage> {
                                         .validate()) {
                                       const url =
                                           "$endpointDomain/auth/api/login";
-                                      final response = await request.login(
+                                      await request.login(
                                           url, {
                                         'email': _controllerEmail.text,
                                         'password': _controllerPassword.text
@@ -204,11 +202,12 @@ class _State extends State<LoginPage> {
                                       print("tidak valid");
                                     }
                                   },
-                                  child: Text("Login"),
+                                  child: const Text("Login"),
                                 ))
                           ],
                         ))),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TextButton(
                       child: const Text(
@@ -217,13 +216,12 @@ class _State extends State<LoginPage> {
                       onPressed: () {
                         //signup screen
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RegisterPage(),
+                          builder: (context) => const RegisterPage(),
                         ));
                       },
                     ),
                     const Text('if you dont have an account.'),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 )
               ],
             )));

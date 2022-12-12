@@ -5,19 +5,12 @@ import 'package:cleanify/consts.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
-import 'package:cleanify/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:cleanify/banksampah/page/form.dart';
 import 'package:cleanify/laporsampah/page/form_report.dart';
 import 'package:cleanify/laporsampah/page/list_report.dart';
 import 'package:provider/provider.dart';
-
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:cleanify/core/drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class GlobalDrawer extends StatefulWidget {
@@ -57,7 +50,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
             MaterialPageRoute(builder: (context) => const HomePage()),
             (Route<dynamic> route) => false);
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => const LoginPage(),
         ));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -87,7 +80,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
               dense: true,
@@ -98,11 +91,11 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
+                  MaterialPageRoute(builder: (context) => const RegisterPage()),
                 );
               },
               dense: true,

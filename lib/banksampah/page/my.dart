@@ -46,9 +46,9 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (_, index){
                       return ListTile(
-                      tileColor: Color.fromARGB(255, 255, 255, 255),
+                      tileColor: const Color.fromARGB(255, 255, 255, 255),
                       shape: RoundedRectangleBorder(
-                          side: BorderSide(
+                          side: const BorderSide(
                           color: Color.fromARGB(255, 51, 53, 51),
                           ),
                           borderRadius: BorderRadius.circular(8.0),
@@ -73,7 +73,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                       },
                       );
                   },
-                  separatorBuilder: (context, index) => SizedBox(
+                  separatorBuilder: (context, index) => const SizedBox(
                       height: 10,
                   )
                   );

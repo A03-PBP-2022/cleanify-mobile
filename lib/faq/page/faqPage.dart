@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
-// ignore: unused_import
 import 'package:cleanify/faq/page/faqDetail.dart';
 import 'package:cleanify/faq/model/fetch_faq.dart';
 

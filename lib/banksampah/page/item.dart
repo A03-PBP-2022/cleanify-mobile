@@ -22,34 +22,32 @@ class ItemBankSampah extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(),
         drawer: const GlobalDrawer(),
-        body: Container(
-              child: ListView(
-                padding: const EdgeInsets.all(20.0),
-                shrinkWrap: true,
-                children: <Widget>[
-                  Center( 
-                    child: Text(user.toString() + '\n',
-                      style: const TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24))),
-                      Row(children: [
-                        const Text("Release Date: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                        Text(tanggal.toString().substring(0, 10), style: const TextStyle(fontSize: 18))
-                      ]),
-                      Row(children: [
-                        const Text("Address: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                        Text(alamat.toString(), style: const TextStyle(fontSize: 18))
-                      ]),
-                      Row(children: [
-                        const Text("Type: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                        Text(jenis.toString(), style: const TextStyle(fontSize: 18)),
-                      ]),
-                      const Text("Contact: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                      Text(kontak.toString(), style: const TextStyle(fontSize: 18)),
-                    ],
-                  )
-        ),
+        body: ListView(
+          padding: const EdgeInsets.all(20.0),
+          shrinkWrap: true,
+          children: <Widget>[
+            Center( 
+              child: Text('$user\n',
+                style: const TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontWeight: FontWeight.bold,
+                fontSize: 24))),
+                Row(children: [
+                  const Text("Release Date: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  Text(tanggal.toString().substring(0, 10), style: const TextStyle(fontSize: 18))
+                ]),
+                Row(children: [
+                  const Text("Address: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  Text(alamat.toString(), style: const TextStyle(fontSize: 18))
+                ]),
+                Row(children: [
+                  const Text("Type: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                  Text(jenis.toString(), style: const TextStyle(fontSize: 18)),
+                ]),
+                const Text("Contact: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                Text(kontak.toString(), style: const TextStyle(fontSize: 18)),
+              ],
+            ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(

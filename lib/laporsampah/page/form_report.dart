@@ -1,10 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:cleanify/consts.dart';
-import 'package:flutter/services.dart';
 
 class FormReportPage extends StatefulWidget {
   const FormReportPage({super.key});
@@ -24,22 +22,22 @@ class _FormReportPageState extends State<FormReportPage> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      drawer: GlobalDrawer(),
+      drawer: const GlobalDrawer(),
       appBar: AppBar(
-        title: Text("Report Locations"),
+        title: const Text("Report Locations"),
       ),
       body: Form(
         key: _loginFormKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                      padding: EdgeInsets.all(5),
-                      child: Text(
+                      padding: const EdgeInsets.all(5),
+                      child: const Text(
                         "Help Us Report Dump Areas!",
                         style: TextStyle(fontSize: 25),
                         textAlign: TextAlign.center,
@@ -49,13 +47,13 @@ class _FormReportPageState extends State<FormReportPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: locationField,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       hintText:
                           "ex: The river next to BCA building, Ahmad Yani Road",
                       labelText: "Location",
-                      icon: Icon(Icons.assignment),
+                      icon: const Icon(Icons.assignment),
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -69,12 +67,12 @@ class _FormReportPageState extends State<FormReportPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: urgencyField,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "Rate the urgency out of 5",
                       labelText: "Urgency Level",
-                      icon: Icon(Icons.person),
+                      icon: const Icon(Icons.person),
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -97,12 +95,12 @@ class _FormReportPageState extends State<FormReportPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: descriptionField,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "ex: Dangerous electronic waste",
                       labelText: "Description",
-                      icon: Icon(Icons.assignment),
+                      icon: const Icon(Icons.assignment),
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -115,9 +113,6 @@ class _FormReportPageState extends State<FormReportPage> {
                   ),
                 ),
                 ElevatedButton(
-                    child: const Text(
-                      'Submit',
-                    ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.blue.shade700),
@@ -137,11 +132,13 @@ class _FormReportPageState extends State<FormReportPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => FormReportPage()),
+                              builder: (context) => const FormReportPage()),
                         );
                       }
-                      ;
-                    }),
+                    },
+                    child: const Text(
+                      'Submit',
+                    )),
               ],
             ),
           ),
