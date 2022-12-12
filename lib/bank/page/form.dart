@@ -173,7 +173,9 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
                         'jenis': _pilihan.toString(),
                       });
                       print(response);
-
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Waste added."),
+                      ));
                       Navigator.push(
                         context, 
                         MaterialPageRoute(

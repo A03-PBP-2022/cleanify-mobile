@@ -1,7 +1,7 @@
 import 'package:cleanify/consts.dart';
 import 'package:cleanify/core/home.dart';
 import 'package:flutter/material.dart';
-import 'package:cleanify/authentication/page/registerPage.dart';
+import 'package:cleanify/authentication/page/register.dart';
 import 'package:cleanify/authentication/models/user.dart';
 import 'dart:core';
 import 'package:provider/provider.dart';
@@ -45,25 +45,17 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                     child: const Text(
-                      'Masuk ke Akun Pengguna',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 22),
+                      'Log in to your account.',
+                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 22),
                     )),
                 if (isFailed)
                   Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                      decoration: BoxDecoration(
-                          color: Colors.red[900],
-                          borderRadius: BorderRadius.circular(5)),
+                      decoration: BoxDecoration(color: Colors.red[900], borderRadius: BorderRadius.circular(5)),
                       child: const Text(
                         'Login failed! Re-check your credentials!',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14),
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14),
                       )),
                 Form(
                     key: _loginFormKey,
@@ -79,16 +71,14 @@ class _LoginPageState extends State<LoginPage> {
                               child: TextFormField(
                                 controller: _controllerEmail,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0)),
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                                   hintText: 'Email',
                                   prefixIcon: const Icon(Icons.email),
                                   hintStyle: const TextStyle(
                                     color: Color.fromRGBO(200, 200, 200, 1),
                                   ),
                                 ),
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Email cannot be empty";
@@ -107,24 +97,20 @@ class _LoginPageState extends State<LoginPage> {
                                 controller: _controllerPassword,
                                 obscureText: !isPasswordVisible,
                                 decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5.0)),
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                                   hintText: 'Password',
                                   prefixIcon: const Icon(Icons.lock),
                                   suffixIcon: IconButton(
                                     color: const Color.fromRGBO(200, 200, 200, 1),
                                     splashRadius: 1,
-                                    icon: Icon(isPasswordVisible
-                                        ? Icons.visibility_outlined
-                                        : Icons.visibility_off_outlined),
+                                    icon: Icon(isPasswordVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                                     onPressed: togglePasswordView,
                                   ),
                                   hintStyle: const TextStyle(
                                     color: Color.fromRGBO(200, 200, 200, 1),
                                   ),
                                 ),
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
+                                autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return "Password cannot be empty";
@@ -138,24 +124,14 @@ class _LoginPageState extends State<LoginPage> {
                                 width: double.infinity,
                                 child: TextButton(
                                   style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.green),
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.white),
-                                    padding:
-                                        MaterialStateProperty.all<EdgeInsets>(
-                                            const EdgeInsets.fromLTRB(
-                                                20, 10, 20, 10)),
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
+                                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                    padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.fromLTRB(20, 10, 20, 10)),
                                   ),
                                   onPressed: () async {
-                                    if (_loginFormKey.currentState!
-                                        .validate()) {
-                                      const url =
-                                          "$endpointDomain/auth/api/login";
-                                      await request.login(
-                                          url, {
+                                    if (_loginFormKey.currentState!.validate()) {
+                                      const url = "$endpointDomain/auth/api/login";
+                                      await request.login(url, {
                                         'email': _controllerEmail.text,
                                         'password': _controllerPassword.text
                                       });
@@ -174,22 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                                         user.phoneNumber = info['phoneNumber'];
                                         user.address = info['address'];
                                         user.role = info['role'];
-                                        user.permissions =
-                                            (info['permissions'] as List)
-                                                .map((item) => item as String)
-                                                .toList();
-                                        Navigator.of(context)
-                                            .pushAndRemoveUntil(
-                                                MaterialPageRoute(
-                                                    builder:
-                                                        (context) =>
-                                                            const HomePage()),
-                                                (Route<dynamic> route) =>
-                                                    false);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(const SnackBar(
-                                          content:
-                                              Text("Successfully logged in!"),
+                                        user.permissions = (info['permissions'] as List).map((item) => item as String).toList();
+                                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const HomePage()), (Route<dynamic> route) => false);
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                          content: Text("Successfully logged in!"),
                                         ));
                                       } else {
                                         setState(() {

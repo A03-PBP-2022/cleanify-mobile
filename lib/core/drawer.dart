@@ -1,6 +1,6 @@
 import 'package:cleanify/authentication/models/user.dart';
-import 'package:cleanify/authentication/page/loginPage.dart';
-import 'package:cleanify/authentication/page/registerPage.dart';
+import 'package:cleanify/authentication/page/login.dart';
+import 'package:cleanify/authentication/page/register.dart';
 import 'package:cleanify/consts.dart';
 import 'package:cleanify/faq/page/page.dart';
 import 'package:cleanify/faq/page/form.dart';

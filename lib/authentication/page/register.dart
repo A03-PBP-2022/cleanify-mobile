@@ -32,7 +32,10 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String role = 'user';
-  List<String> listRole = ['user', 'crew'];
+  List<String> listRole = [
+    'user',
+    'crew'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +52,8 @@ class _RegisterPageState extends State<RegisterPage> {
             padding: const EdgeInsets.all(20),
             child: Column(children: [
               const Text(
-                'Daftar Akun',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 22),
+                'Account Registration',
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 22),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 20, 8, 8),
@@ -64,8 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     prefixIcon: const Icon(Icons.email),
                     labelText: "Email",
                     hintText: "Ex: myname@example.com",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -82,8 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.person),
                     labelText: "Username",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -96,20 +94,17 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  //obscureText: true,
+//obscureText: true,
                   controller: controllerPassword,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.security),
                     labelText: "Password",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                     suffixIcon: IconButton(
                       color: const Color.fromRGBO(200, 200, 200, 1),
                       splashRadius: 1,
-                      icon: Icon(isPasswordVisible
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined),
+                      icon: Icon(isPasswordVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                       onPressed: togglePasswordView,
                     ),
                   ),
@@ -124,20 +119,17 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  //obscureText: true,
+//obscureText: true,
                   controller: controllerConfirmPassword,
                   obscureText: !isPasswordVisible,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.security),
                     labelText: "Confirm Password",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                     suffixIcon: IconButton(
                       color: const Color.fromRGBO(200, 200, 200, 1),
                       splashRadius: 1,
-                      icon: Icon(isPasswordVisible
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined),
+                      icon: Icon(isPasswordVisible ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                       onPressed: togglePasswordView,
                     ),
                   ),
@@ -145,7 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     if (value!.isEmpty) {
                       return 'Password cannot be empty';
                     }
-                    // if (value! != ) kasi validasi kalo imput != sama password
+// if (value! != ) kasi validasi kalo imput != sama password
                     return null;
                   },
                 ),
@@ -157,8 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.person),
                     labelText: "Full Name",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -175,8 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.phone),
                     labelText: "Phone Number",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -193,8 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.business),
                     labelText: "Address",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -205,33 +194,32 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               ListTile(
-                  leading: const Icon(Icons.class_),
-                  title: const Text(
-                    'Role',
-                  ),
-                  trailing: DropdownButton(
-                    value: role,
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: listRole.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        role = newValue!.toLowerCase();
-                      });
-                    },
-                  ),
+                leading: const Icon(Icons.class_),
+                title: const Text(
+                  'Role',
                 ),
+                trailing: DropdownButton(
+                  value: role,
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  items: listRole.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      role = newValue!.toLowerCase();
+                    });
+                  },
+                ),
+              ),
               Padding(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
                       onPressed: () async {
                         if (_registerFormKey.currentState!.validate()) {
-                          const url =
-                              "$endpointDomain/auth/api/register";
+                          const url = "$endpointDomain/auth/api/register";
                           final response = await request.post(url, {
                             'email': controllerEmail.text,
                             'username': controllerUsername.text,
@@ -240,23 +228,19 @@ class _RegisterPageState extends State<RegisterPage> {
                             'name': controllerFullName.text,
                             'phoneNumber': controllerPhoneNumber.text,
                             'address': controllerAddress.text,
-                            'role' : role,
+                            'role': role,
                           });
 
-                        if(response['status']) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content: Text(
-                                "Account has been successfully registered! You may now log in."),
-                          ));
-                          Navigator.pop(context);
-                        } else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content: Text(
-                                "An error occured, please try again."),
-                          ));
-                        }
+                          if (response['status']) {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Account has been successfully registered! You may now log in."),
+                            ));
+                            Navigator.pop(context);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("An error occured, please try again."),
+                            ));
+                          }
                           // _controllerPassword.text);
                           setState(() {
                             isFailed = false;
@@ -272,17 +256,12 @@ class _RegisterPageState extends State<RegisterPage> {
                           fixedSize: const Size(500, 30),
                           textStyle: const TextStyle(
                             color: Colors.white,
-                          )
-                        ),
-                      child: const Text('Register')
-                      )
-                    )
-                  ]),
-        
+                          )),
+                      child: const Text('Register')))
+            ]),
           ),
         ),
       ),
     );
   }
 }
-

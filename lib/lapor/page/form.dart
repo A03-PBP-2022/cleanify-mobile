@@ -15,8 +15,7 @@ class _FormReportPageState extends State<FormReportPage> {
   final _loginFormKey = GlobalKey<FormState>();
   final TextEditingController locationField = TextEditingController(text: "");
   final TextEditingController urgencyField = TextEditingController(text: "");
-  final TextEditingController descriptionField =
-      TextEditingController(text: "");
+  final TextEditingController descriptionField = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +47,10 @@ class _FormReportPageState extends State<FormReportPage> {
                   child: TextFormField(
                     controller: locationField,
                     decoration: InputDecoration(
-                      hintText:
-                          "ex: The river next to BCA building, Ahmad Yani Road",
+                      hintText: "ex: The river next to BCA building, Ahmad Yani Road",
                       labelText: "Location",
                       icon: const Icon(Icons.assignment),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -71,8 +68,7 @@ class _FormReportPageState extends State<FormReportPage> {
                       hintText: "Rate the urgency out of 5",
                       labelText: "Urgency Level",
                       icon: const Icon(Icons.person),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -99,8 +95,7 @@ class _FormReportPageState extends State<FormReportPage> {
                       hintText: "ex: Dangerous electronic waste",
                       labelText: "Description",
                       icon: const Icon(Icons.assignment),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -114,10 +109,8 @@ class _FormReportPageState extends State<FormReportPage> {
                 ),
                 ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.blue.shade700),
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue.shade700),
+                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                     ),
                     onPressed: () async {
                       if (_loginFormKey.currentState!.validate()) {
@@ -127,12 +120,15 @@ class _FormReportPageState extends State<FormReportPage> {
                           'urgency': urgencyField.text,
                           'description': descriptionField.text,
                         });
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Report sent."),
+                        ));
+
                         print(response);
                         // Map<String, dynamic> data = jsonDecode(response);
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const FormReportPage()),
+                          MaterialPageRoute(builder: (context) => const FormReportPage()),
                         );
                       }
                     },

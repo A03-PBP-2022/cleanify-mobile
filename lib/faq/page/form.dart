@@ -47,7 +47,7 @@ class _FaqFormState extends State<FAQFormPage> {
     request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Faqs'),
+        title: const Text('Add New FAQ'),
       ),
       drawer: const GlobalDrawer(),
       body: Form(
@@ -111,13 +111,12 @@ class _FaqFormState extends State<FAQFormPage> {
                       if (_formKey.currentState!.validate()) {
                         submit(q!, a!);
                       }
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const FAQFormPage()));
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("FAQ added."),
+                      ));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const FAQFormPage()));
                     },
-                    child: const Text("Add",
-                        style: TextStyle(color: Colors.white)),
+                    child: const Text("Add", style: TextStyle(color: Colors.white)),
                   ),
                 ),
               ],
