@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/faq/model/faq_model.dart';
 import 'package:http/http.dart' as http;
 
 
 Future<List<Faq>> fetchFaq() async {
-    var url = Uri.parse('https://cleanifyid.up.railway.app/faq/json/');
+    var url = Uri.parse('$endpointDomain/faq/json/');
     var response = await http.get(
     url,
     headers: {

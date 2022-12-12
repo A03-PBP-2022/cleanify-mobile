@@ -1,15 +1,12 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
-import 'package:cleanify/laporsampah/model/laporan.dart';
-import 'package:cleanify/laporsampah/page/list_report.dart';
-import 'package:intl/intl.dart';
-
-List<Details> listData = [];
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:cleanify/consts.dart';
+import 'package:flutter/services.dart';
 
 class FormReportPage extends StatefulWidget {
-  // final String id;
   const FormReportPage({super.key});
 
   @override
@@ -17,28 +14,22 @@ class FormReportPage extends StatefulWidget {
 }
 
 class _FormReportPageState extends State<FormReportPage> {
-  final _formKey = GlobalKey<FormState>();
-  // TextEditingController LocationField = TextEditingController(text: "");
-  // TextEditingController UrgencyField = TextEditingController(text: "");
-  // TextEditingController DescriptionField = TextEditingController(text: "");
-  // TextEditingController ContactField = TextEditingController(text: "");
-  // TextEditingController DateField = TextEditingController(text: "");
-
-  String? LocationField = "";
-  String? UrgencyField = "";
-  String? DescriptionField = "";
-  String? ContactField = "";
-  String? DateField = "";
+  final _loginFormKey = GlobalKey<FormState>();
+  final TextEditingController locationField = TextEditingController(text: "");
+  final TextEditingController urgencyField = TextEditingController(text: "");
+  final TextEditingController descriptionField =
+      TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       drawer: GlobalDrawer(),
       appBar: AppBar(
-        title: Text("Pelaporan Wilayah Sampah"),
+        title: Text("Report Locations"),
       ),
       body: Form(
-        key: _formKey,
+        key: _loginFormKey,
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(20.0),
@@ -46,27 +37,29 @@ class _FormReportPageState extends State<FormReportPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        "Help Us Report Dump Areas!",
+                        style: TextStyle(fontSize: 35),
+                        textAlign: TextAlign.center,
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: locationField,
                     decoration: new InputDecoration(
-                      hintText: "Wilayah sampah",
+                      hintText:
+                          "ex: The river next to BCA building, Ahmad Yani Road",
                       labelText: "Location",
                       icon: Icon(Icons.assignment),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        LocationField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        LocationField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
-                        return "Please fill the location's detail";
+                        return "Please fill the detail of location!";
                       }
                       return null;
                     },
@@ -75,27 +68,26 @@ class _FormReportPageState extends State<FormReportPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    // controller: UrgencyField,
+                    controller: urgencyField,
                     decoration: new InputDecoration(
-                      hintText: "out of 5",
-                      labelText: "Urgency",
+                      hintText: "Rate the urgency out of 5",
+                      labelText: "Urgency Level",
                       icon: Icon(Icons.person),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        UrgencyField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        UrgencyField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
-                        return "Please fill the location's urgency level";
+                        return "Please fill the location's urgency level!";
+                      } else {
+                        try {
+                          var intValue = int.parse(value.toString());
+                          if (intValue < 1 || intValue > 5) {
+                            return "Fill with integers between 1-5!";
+                          }
+                        } catch (e) {
+                          return "Fill with integers!";
+                        }
                       }
                       return null;
                     },
@@ -104,73 +96,51 @@ class _FormReportPageState extends State<FormReportPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    // controller: DescriptionField,
+                    controller: descriptionField,
                     decoration: new InputDecoration(
-                      hintText: "Description",
-                      labelText: "Minimum of 50 words",
+                      hintText: "ex: Dangerous electronic waste",
+                      labelText: "Description",
                       icon: Icon(Icons.assignment),
                       border: OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        DescriptionField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        DescriptionField = value!;
-                      });
-                    },
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
-                        return "Please fill the location's description";
+                        return "Please fill the location's description!";
+                      } else if (value.toString().length < 10) {
+                        return "Description is too short!";
                       }
                       return null;
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    // controller: ContactField,
-                    decoration: new InputDecoration(
-                      hintText: "0821-xxxx-xxxx",
-                      labelText: "Contact Information",
-                      icon: Icon(Icons.person),
-                      border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                ElevatedButton(
+                    child: const Text(
+                      'Submit',
                     ),
-                    onChanged: (String? value) {
-                      setState(() {
-                        ContactField = value!;
-                      });
-                    },
-                    onSaved: (String? value) {
-                      setState(() {
-                        ContactField = value!;
-                      });
-                    },
-                    validator: (value) {
-                      if (value?.isEmpty ?? true) {
-                        return "Please fill in your contact details";
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.blue.shade700),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                    onPressed: () async {
+                      if (_loginFormKey.currentState!.validate()) {
+                        const url = "$endpointDomain/report/reportlocation/";
+                        final response = await request.post(url, {
+                          'location': locationField.text,
+                          'urgency': urgencyField.text,
+                          'description': descriptionField.text,
+                        });
+                        print(response);
+                        // Map<String, dynamic> data = jsonDecode(response);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FormReportPage()),
+                        );
                       }
-                      return null;
-                    },
-                  ),
-                ),
-                TextButton(
-                    child: const Text('Submit'),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Details data = Details(
-                            DateField.toString(),
-                            LocationField.toString(),
-                            UrgencyField.toString(),
-                            DescriptionField.toString(),
-                            ContactField.toString());
-                        listData.add(data);
-                      }
+                      ;
                     }),
               ],
             ),

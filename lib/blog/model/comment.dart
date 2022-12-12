@@ -1,4 +1,4 @@
-import 'package:cleanify/blog/consts.dart';
+import 'package:cleanify/consts.dart';
 import 'package:http/http.dart' as http;
 
 import 'dart:convert';
@@ -6,6 +6,10 @@ import 'dart:convert';
 Comments commentsFromJson(String str) => Comments.fromJson(json.decode(str));
 
 String commentsToJson(Comments data) => json.encode(data.toJson());
+
+Comment commentFromJson(String str) => Comment.fromJson(json.decode(str));
+
+String commentToJson(Comment data) => json.encode(data.toJson());
 
 class Comments {
     Comments({
@@ -74,20 +78,20 @@ class Comment {
 class Author {
     Author({
         required this.username,
-        required this.nama,
+        required this.name,
     });
 
     String username;
-    String nama;
+    String name;
 
     factory Author.fromJson(Map<String, dynamic> json) => Author(
         username: json["username"],
-        nama: json["nama"],
+        name: json["name"],
     );
 
     Map<String, dynamic> toJson() => {
         "username": username,
-        "nama": nama,
+        "name": name,
     };
 }
 
@@ -108,6 +112,27 @@ Future<List<Comment>> fetchComments(int postId, int pageKey) async {
   }
 
   final data = commentsFromJson(utf8.decode(response.bodyBytes)).results;
+
+  return data;
+}
+
+Future<Comment> fetchComment(int postId, int commentId) async {
+
+  var url = Uri.parse('$endpointDomain/blog/api2/posts/$postId/comments/$commentId');
+
+  final response = await http.get(
+    url,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception("Failed to load list.");
+  }
+
+  final data = commentFromJson(utf8.decode(response.bodyBytes));
 
   return data;
 }
