@@ -41,7 +41,7 @@ class _FormReportPageState extends State<FormReportPage> {
                       padding: EdgeInsets.all(5),
                       child: Text(
                         "Help Us Report Dump Areas!",
-                        style: TextStyle(fontSize: 35),
+                        style: TextStyle(fontSize: 25),
                         textAlign: TextAlign.center,
                       )),
                 ),

@@ -42,6 +42,7 @@ class _ListReportPageState extends State<ListReportPage> {
     final request = context.watch<CookieRequest>();
     getData(request);
     return Scaffold(
+        resizeToAvoidBottomInset: false, 
         appBar: AppBar(
           title: const Text('Report List'),
         ),
@@ -57,41 +58,6 @@ class _ListReportPageState extends State<ListReportPage> {
           ],
         ));
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   final request = context.watch<CookieRequest>();
-  //   getData(request);
-  //   return Scaffold(
-  //       appBar: AppBar(
-  //         title: const Text('Report List'),
-  //       ),
-  //       drawer: GlobalDrawer(),
-  //       body: Column (children: [
-  //         Padding(
-  //           padding: const EdgeInsets.all(8.0),
-  //           child: Container(
-  //               padding: EdgeInsets.all(5),
-  //               child: Text(
-  //                 "Cleaning Crews, We Need Your Help!",
-  //                 style: TextStyle(fontSize: 35),
-  //                 textAlign: TextAlign.center,
-  //               )),
-  //         ),
-  //         Padding(
-  //           padding: const EdgeInsets.all(8.0),
-  //           child: Row(
-  //             mainAxisAlignment: MainAxisAlignment.center,
-  //             children: [
-  //               Container(
-  //                 width: MediaQuery.of(context).size.width / (4 / 3),
-  //                 child:
-  //                     ListView(controller: ScrollController(), children: reports),
-  //               ),
-  //             ],
-  //           )
-  //       )]));
-  // }
   
   getData(request) async {
     Future<List<Widget>> data;
@@ -129,10 +95,10 @@ Widget buildProjectCard({
             children: [
               Center(
                 child: Container(
-                  width: 800,
+                  width: 250,
                   child: Text(
                     location,
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 20),
                     textAlign: TextAlign.center,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
@@ -194,7 +160,7 @@ Widget buildProjectCard({
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 600,
+                width: 250,
                 child: Text(
                   description,
                   maxLines: 3,
