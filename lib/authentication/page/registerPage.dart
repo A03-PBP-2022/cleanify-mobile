@@ -225,7 +225,7 @@ class _State extends State<RegisterPage> {
                     }).toList(),
                     onChanged: (String? newValue) {
                       setState(() {
-                        role = newValue!;
+                        role = newValue!.toLowerCase();
                       });
                     },
                   ),
