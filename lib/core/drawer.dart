@@ -203,15 +203,16 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               );
             },
           ),
-          ListTile(
-            title: const Text('Add New FAQ'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const FAQFormPage()),
-              );
-            },
-          ),
+          if (user.permissions.contains('add_faq'))
+            ListTile(
+              title: const Text('Add New FAQ'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FAQFormPage()),
+                );
+              },
+            ),
           const ListTile(
             title: Text('Blog',
                 style: TextStyle(

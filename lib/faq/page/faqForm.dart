@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cleanify/core/drawer.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class FAQFormPage extends StatefulWidget {
   const FAQFormPage({super.key});
@@ -26,17 +28,15 @@ class _FaqFormState extends State<FAQFormPage> {
   final _formKey = GlobalKey<FormState>();
   String? q;
   String? a;
-  Future<FaqsContent>? _futureAlbum;
   final TextEditingController _in = TextEditingController();
   final TextEditingController _in2 = TextEditingController();
+  late CookieRequest request;
 
   void submit(String q, String a) async {
-    var url = Uri.parse('$endpointDomain/faq/addFlutter/');
-    var map = <String, dynamic>{};
-    map["q"] = q;
-    map["a"] = a;
-    var response = await http.post(url, body: map);
-    print(response.body);
+    var response = await request.post('$endpointDomain/faq/addFlutter/', {
+      "q": q,
+      "a": a
+    });
     // onPressed(BuildContext context) {
     //   Navigator.pushReplacement(
     //     context,
@@ -47,6 +47,7 @@ class _FaqFormState extends State<FAQFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Faqs'),
