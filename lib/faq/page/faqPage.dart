@@ -43,7 +43,7 @@ class _FaqState extends State<FaqPage> {
                             child: Material(
                                 elevation: 2.0,
                                 borderRadius: BorderRadius.circular(5.0),
-                                color:Colors.greenAccent,
+                                color:Colors.green,
                                 shadowColor: Colors.blueGrey,
                                 child: ListTile(
                                   onTap: () {
@@ -51,14 +51,15 @@ class _FaqState extends State<FaqPage> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              MyWatchlistDetailPage(
+                                              FAQDetailPage(
                                             faqs : snapshot.data![index],
                                           ),
                                         ),
                                     );
                                   },
                                   title:
-                                      Text(snapshot.data![index].fields.question),
+                                      Text(snapshot.data![index].fields.question, style: const TextStyle(
+                                color: Colors.white)),
                                 ),
                               ),
                           ),

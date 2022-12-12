@@ -3,6 +3,7 @@ import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:cleanify/authentication/page/registerPage.dart';
 import 'package:cleanify/consts.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
+import 'package:cleanify/faq/page/faqForm.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
 import 'package:flutter/material.dart';
@@ -219,6 +220,15 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const FaqPage()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Add New FAQ'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FAQFormPage()),
               );
             },
           ),

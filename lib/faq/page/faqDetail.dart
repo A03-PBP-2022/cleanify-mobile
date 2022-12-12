@@ -2,10 +2,10 @@ import 'package:cleanify/faq/model/faq_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cleanify/core/drawer.dart';
 
-class MyWatchlistDetailPage extends StatelessWidget {
+class FAQDetailPage extends StatelessWidget {
   final Faq faqs;
 
-  const MyWatchlistDetailPage({Key? key, required this.faqs})
+  const FAQDetailPage({Key? key, required this.faqs})
       : super(key: key);
 
   @override
@@ -64,7 +64,7 @@ class MyWatchlistDetailPage extends StatelessWidget {
                   const Spacer(),
                   TextButton(
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                         padding: const EdgeInsets.all(15.0),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         alignment: Alignment.center),
