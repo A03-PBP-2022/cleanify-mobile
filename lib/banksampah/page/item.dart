@@ -51,27 +51,27 @@ class ItemBankSampah extends StatelessWidget {
                   )
         ),
         bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 50,
-                width: 10,
-                child: TextButton(
-                        // ignore: sort_child_properties_last
-                        child: const Text(
-                          "Back",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.blue),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(
-                            context,
-                          );
-                        },
-                      ),
-              )
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 50,
+            width: 10,
+            child: TextButton(
+              // ignore: sort_child_properties_last
+              child: const Text(
+                "Back",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.blue),
+              ),
+              onPressed: () {
+                Navigator.pop(
+                  context,
+                );
+              },
             ),
+          )
+        ),
     );
     }
 }

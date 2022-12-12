@@ -54,7 +54,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                           borderRadius: BorderRadius.circular(8.0),
                       ),
                       title: Text(
-                              "${snapshot.data![index].fields.alamat}",
+                              "Address: ${snapshot.data![index].fields.alamat}",
                               style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
