@@ -1,6 +1,7 @@
 import 'package:cleanify/authentication/models/user.dart';
 import 'package:cleanify/authentication/page/loginPage.dart';
 import 'package:cleanify/authentication/page/registerPage.dart';
+import 'package:cleanify/consts.dart';
 import 'package:cleanify/faq/page/faqPage.dart';
 import 'package:cleanify/banksampah/page/my.dart';
 import 'package:cleanify/blog/page/index.dart';
@@ -38,7 +39,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
     final user = context.watch<User>();
 
     Future<void> logout(BuildContext context, CookieRequest request) async {
-      const url = "https://cleanifyid.up.railway.app/auth/api/logout";
+      const url = "$endpointDomain/auth/api/logout";
       final response = await request.logout(url);
       print(response);
       if (response['status']) {
@@ -141,7 +142,7 @@ class _GlobalDrawerState extends State<GlobalDrawer> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => const HomePage()),
               );
             },
           ),
