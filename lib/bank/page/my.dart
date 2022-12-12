@@ -1,7 +1,7 @@
-import 'package:cleanify/banksampah/page/item.dart';
+import 'package:cleanify/bank/page/item.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:cleanify/banksampah/page/fetch.dart';
+import 'package:cleanify/bank/page/fetch.dart';
 
 class BankSampahJsonPage extends StatefulWidget {
     const BankSampahJsonPage({Key? key}) : super(key: key);

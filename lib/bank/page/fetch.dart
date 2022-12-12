@@ -1,11 +1,10 @@
 import 'dart:convert';
+import 'package:cleanify/bank/model/banksampah.dart';
 import 'package:cleanify/consts.dart';
-import 'package:cleanify/faq/model/faq_model.dart';
 import 'package:http/http.dart' as http;
 
-
-Future<List<Faq>> fetchFaq() async {
-    var url = Uri.parse('$endpointDomain/faq/json/');
+Future<List<BankSampah>> fetchMyBankSampah() async {
+    var url = Uri.parse('$endpointDomain/bank/json_flutter/');
     var response = await http.get(
     url,
     headers: {
@@ -18,12 +17,11 @@ Future<List<Faq>> fetchFaq() async {
     var data = jsonDecode(utf8.decode(response.bodyBytes));
 
     // melakukan konversi data json menjadi object ToDo
-    List<Faq> listFaq = [];
+    List<BankSampah> listMyBankSampah = [];
     for (var d in data) {
-    if (d != null) {
-        listFaq.add(Faq.fromJson(d));
+      if (d != null) {
+          listMyBankSampah.add(BankSampah.fromJson(d));
+        }
     }
-    }
-
-    return listFaq;
+    return listMyBankSampah;
 }

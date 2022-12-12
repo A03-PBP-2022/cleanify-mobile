@@ -1,5 +1,5 @@
 import 'package:cleanify/authentication/models/user.dart';
-import 'package:cleanify/banksampah/page/my.dart';
+import 'package:cleanify/bank/page/my.dart';
 import 'package:cleanify/consts.dart';
 import 'package:cleanify/core/drawer.dart';
 import 'package:flutter/material.dart';
