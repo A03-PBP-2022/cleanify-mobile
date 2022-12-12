@@ -33,7 +33,7 @@ class _BankSampahFormPageState extends State<BankSampahFormPage> {
 
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Form Bank Sampah'),
+                title: const Text('Add Waste'),
             ),
             drawer: const GlobalDrawer(),
             body: Form(

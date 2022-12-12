@@ -18,7 +18,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
     
     return Scaffold(
         appBar: AppBar(
-            title: const Text('My Bank Sampah'),
+            title: const Text('My Waste Bank'),
         ),
         drawer: const GlobalDrawer(),
         body: FutureBuilder(
@@ -32,7 +32,7 @@ class _BankSampahJsonPageState extends State<BankSampahJsonPage> {
                   return Column(
                   children: const [
                       Text(
-                      "Tidak ada Bank Sampah :(",
+                      "Nothing on the bank. :(",
                       style: TextStyle(
                           color: Color(0xff59A5D8),
                           fontSize: 20),

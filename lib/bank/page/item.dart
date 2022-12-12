@@ -60,7 +60,7 @@ class ItemBankSampah extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                backgroundColor: MaterialStateProperty.all(Colors.green),
               ),
               onPressed: () {
                 Navigator.pop(
