@@ -1,3 +1,4 @@
+import 'package:cleanify/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
@@ -30,7 +31,7 @@ class _FaqFormState extends State<FAQFormPage> {
   final TextEditingController _in2 = TextEditingController();
 
   void submit(String q, String a) async {
-    var url = Uri.parse('https://cleanifyid.up.railway.app/faq/addFlutter/');
+    var url = Uri.parse('$endpointDomain/faq/addFlutter/');
     var map = <String, dynamic>{};
     map["q"] = q;
     map["a"] = a;
