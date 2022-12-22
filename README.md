@@ -1,7 +1,7 @@
 # Cleanify (di mobile)
 
-[![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
-[![Status build](https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Release%20app?logo=github&logoColor=white&label=release)](https://github.com/A03-PBP-2022/proyek/actions/workflows/release.yml)
+[![Status build](https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/build.yml?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
+[![Status build](https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/release.yml?logo=github&logoColor=white&label=release)](https://github.com/A03-PBP-2022/proyek/actions/workflows/release.yml)
 ![App Center status]
 
 Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
@@ -17,9 +17,9 @@ Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membant
 | [![Release status]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public) | [![Download from GitHub]](https://github.com/A03-PBP-2022/cleanify-mobile/releases/latest)
 | [![App Center status]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public) | [![Download from App Center]](https://install.appcenter.ms/orgs/a03-pbp-2022/apps/cleanify/distribution_groups/public)
 
-[Master build status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/master?logo=github-actions&logoColor=white&label=master
-[Dev build status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Build%20app/dev?logo=github-actions&logoColor=white&label=dev
-[Release status]: https://img.shields.io/github/workflow/status/A03-PBP-2022/cleanify-mobile/Release%20app?logo=github&logoColor=white&label=release
+[Master build status]: https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/build.yml?branch=master&logo=github-actions&logoColor=white&label=master
+[Dev build status]: https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/build.yml?branch=dev&logo=github-actions&logoColor=white&label=dev
+[Release status]: https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/build.yml?logo=github&logoColor=white&label=release
 [App center status]: https://img.shields.io/visual-studio-app-center/builds/A03-PBP-2022/Cleanify/master/ca4d4f04292771289c9ec1897f4a1840548d936c?label=appcenter&logo=azure-pipelines
 [Download from nightly.link]: https://img.shields.io/badge/nightly.link-download-540054
 [Download from GitHub]: https://img.shields.io/github/v/release/A03-PBP-2022/cleanify-mobile?label=github&sort=semver
