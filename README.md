@@ -1,3 +1,5 @@
+<img align=right src=https://raw.githubusercontent.com/A03-PBP-2022/cleanify-brand/master/logo.svg>
+
 # Cleanify (di mobile)
 
 [![Status build](https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/cleanify-mobile/build.yml?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/build.yml)
@@ -7,6 +9,12 @@
 Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
 
 ## 📲 Gunakan
+
+> **Warning**
+>
+> Dikarenakan kelas Pemrograman Berbasis Platform di semester ini telah berakhir, aplikasi di Railway tersebut telah dimatikan, yang membuat rilis-rilis ini tidak dapat digunakan dengan semestinya. Namun, Anda tetap dapat mempersiapkannya di lingkungan lokal Anda (di komputer Anda) jika Anda ingin menjelajahi aplikasi ini.
+> 
+> Foto-foto aplikasi juga dapat dilihat di [A03-PBP-2022/cleanify-gallery](https://github.com/A03-PBP-2022/cleanify-gallery).
 
 ### ⬇ Unduh
 
